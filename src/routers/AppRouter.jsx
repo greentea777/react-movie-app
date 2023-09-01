@@ -6,6 +6,8 @@ import PageHome from "../pages/PageHome";
 import PageAbout from "../pages/PageAbout";
 import { useEffect, useState } from "react";
 
+const MOVIE_DB_API_URL = "https://api.themoviedb.org/3/";
+
 function App() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsloading] = useState(true);
@@ -20,7 +22,7 @@ function App() {
   };
   const fetchMovies = () => {
     fetch(
-      "https://api.themoviedb.org/3/discover/movie?language=en-US&page=1&sort_by=popularity.desc",
+      `${MOVIE_DB_API_URL}discover/movie?language=en-US&page=1&sort_by=popularity.desc`,
       options
     )
       .then((response) => response.json())
@@ -35,7 +37,7 @@ function App() {
   };
 
   const fetchGenres = () => {
-    fetch("https://api.themoviedb.org/3/genre/movie/list?language=en", options)
+    fetch(`${MOVIE_DB_API_URL}genre/movie/list?language=en`, options)
       .then((response) => response.json())
       .then((data) => setGenres(data))
       .catch((err) => console.error(err));

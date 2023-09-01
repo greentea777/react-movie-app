@@ -6,7 +6,8 @@ const HeroMovieCard = ({ movie, genreList }) => {
   //   console.log(commonValues);
 
   return (
-    <>
+    <swiper-slide>
+      {/* class="before:from-black before:bg-gradient-to-t before:w-full before:h-full before:absolute before:from-0%" */}
       {/* <picture>
         <source
           srcSet={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
@@ -18,18 +19,21 @@ const HeroMovieCard = ({ movie, genreList }) => {
           alt={movie.title}
         />
       </picture> */}
-      <img
-        className="w-10/12 mx-auto"
-        src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-        alt={movie.title}
-      />
-
-      {commonGenreId?.map((item, index) => (
-        <p key={index}>{item.name}</p>
-      ))}
-      <button>123</button>
-      <button>123</button>
-    </>
+      <div className="test mx-auto w-fit relative before:from-black before:bg-gradient-to-t before:w-full before:h-full before:absolute before:from-10%">
+        <img
+          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          alt={movie.title}
+        />
+        <div className="absolute z-100 bottom-8 text-white flex gap-1.5 justify-center left-0 right-0">
+          {commonGenreId?.slice(0, 3).map((item, index, array) => (
+            <p key={index}>
+              {item.name}
+              {index === array.length - 1 ? "" : " •"}
+            </p>
+          ))}
+        </div>
+      </div>
+    </swiper-slide>
   );
 };
 export default HeroMovieCard;
