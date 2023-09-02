@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import PageHome from "../pages/PageHome";
 import PageAbout from "../pages/PageAbout";
 import { useEffect, useState } from "react";
+import PageFavourite from "../pages/PageFavourite";
 
 const MOVIE_DB_API_URL = "https://api.themoviedb.org/3/";
 
@@ -51,7 +52,7 @@ function App() {
   const genreList = genres.genres;
   return (
     <BrowserRouter>
-      <div className="site-wrapper">
+      <div>
         <Header />
         <Routes>
           <Route
@@ -65,8 +66,8 @@ function App() {
               />
             }
           />
-
           <Route path="/about" exact element={<PageAbout />} />
+          <Route path="/favourite" exact element={<PageFavourite />} />
         </Routes>
         <Footer />
       </div>
