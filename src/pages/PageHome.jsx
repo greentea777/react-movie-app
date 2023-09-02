@@ -23,13 +23,16 @@ const PageHome = ({ movies, isLoading, genreList }) => {
   }, []);
 
   const randomMovie = movies.results
-    ?.sort(() => Math.random() - 0.5)
-    .slice(0, 5);
+    ?.slice(0, 5)
+    .sort(() => Math.random() - 0.5);
   return (
     <main>
       {!isLoading ? (
         <swiper-container
-          slidesPerView="auto"
+          space-between="0"
+          grab-cursor="true"
+          // slidesPerView="auto"
+          // slides-per-view="2"
           ref={swiperElRef}
           pagination="true"
           pagination-clickable="true"
