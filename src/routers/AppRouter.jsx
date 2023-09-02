@@ -5,13 +5,17 @@ import Footer from "../components/Footer";
 import PageHome from "../pages/PageHome";
 import PageAbout from "../pages/PageAbout";
 import { useEffect, useState } from "react";
+import PageFavourite from "../pages/PageFavourite";
 
 const MOVIE_DB_API_URL = "https://api.themoviedb.org/3/";
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [movieList, setMovieList] = useState([]);
+  const [category, setCategory] = useState("popular");
   const [isLoading, setIsloading] = useState(true);
   const [genres, setGenres] = useState([]);
+  const genreList = genres.genres;
   const options = {
     method: "GET",
     headers: {
@@ -43,16 +47,37 @@ function App() {
       .catch((err) => console.error(err));
   };
 
+  const fetchMovieList = (category) => {
+    fetch(
+      `${MOVIE_DB_API_URL}/movie/${category}?language=en-US&page=1`,
+      options
+    )
+      .then((response) => response.json())
+      .then((data) => setMovieList(data))
+      .catch((err) => console.error(err));
+  };
+
+  // Category
+  const handleCategory = (e) => {
+    setCategory(e.target.value);
+    console.log(e.target.value);
+  };
+
+  useEffect(() => {
+    fetchMovieList(category);
+  }, [category]);
+
   useEffect(() => {
     fetchMovies();
     fetchGenres();
   }, []);
 
-  const genreList = genres.genres;
+  console.log(movieList);
+
   return (
     <BrowserRouter>
-      <div className="site-wrapper">
-        <Header />
+      <div>
+        <Header handleCategory={handleCategory} />
         <Routes>
           <Route
             path="/"
@@ -61,12 +86,14 @@ function App() {
               <PageHome
                 movies={movies}
                 genreList={genreList}
+                movieList={movieList}
                 isLoading={isLoading}
+                category={category}
               />
             }
           />
-
           <Route path="/about" exact element={<PageAbout />} />
+          <Route path="/favourite" exact element={<PageFavourite />} />
         </Routes>
         <Footer />
       </div>

@@ -1,4 +1,5 @@
 import HeroMovieCard from "../components/HeroMovieCard";
+import ListMovieCard from "../components/ListMovieCard";
 import { useRef, useEffect } from "react";
 
 // import function to register Swiper custom elements
@@ -6,7 +7,7 @@ import { register } from "swiper/element/bundle";
 import "../index.css";
 // register Swiper custom elements
 register();
-const PageHome = ({ movies, isLoading, genreList }) => {
+const PageHome = ({ movies, isLoading, genreList, movieList, category }) => {
   const swiperElRef = useRef(null);
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const PageHome = ({ movies, isLoading, genreList }) => {
     <main>
       {!isLoading ? (
         <swiper-container
-          space-between="0"
+          // space-between="0"
           grab-cursor="true"
           // slidesPerView="auto"
           // slides-per-view="2"
@@ -48,6 +49,20 @@ const PageHome = ({ movies, isLoading, genreList }) => {
       ) : (
         <p>Loading...</p>
       )}
+      <section>
+        <h2>{category}</h2>
+        <swiper-container
+          // style={{ background: "black", width: "70%" }}
+          grab-cursor="true"
+          slides-per-view="auto"
+          space-between="10"
+          // slides-per-view="auto"
+        >
+          {movieList.results?.map((movie, index) => (
+            <ListMovieCard key={index} movie={movie} genreList={genreList} />
+          ))}
+        </swiper-container>
+      </section>
     </main>
   );
 };
