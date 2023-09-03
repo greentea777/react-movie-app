@@ -3,13 +3,13 @@ import Nav from "./Nav";
 import Category from "./Category";
 
 const Header = (handleCategory) => {
-  const [navChangePosition, setNavChangePosition] = useState(true);
+  const [isBrowser, setBrowser] = useState(true);
 
   const isDesktop = e => {
     if (e.matches) {
-      setNavChangePosition(true);
+      setBrowser(true);
     } else {
-      setNavChangePosition(false);
+      setBrowser(false);
     }
     console.log(e.matches);
   };
@@ -23,8 +23,8 @@ const Header = (handleCategory) => {
 
   return (
     <header className="bg-black text-white">
-      <Category handleCategory={handleCategory} />
-      <Nav navChangePosition={navChangePosition} />
+      {isBrowser ? undefined : <Category handleCategory={handleCategory} />}
+      <Nav isBrowser={isBrowser} />
     </header>
   );
 };

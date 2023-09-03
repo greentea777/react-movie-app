@@ -1,37 +1,24 @@
 const Category = ({ handleCategory }) => {
     return (
-        <nav className="flex p-5 justify-evenly">
-            {/* <button className="mx-5 hover:text-red-500" value="popular" onClick={handleCategory}>
-                Popular
-            </button>
-            <button className="mx-5 hover:text-red-500" value="top_rated" onClick={handleCategory}>
-                Top Rated
-            </button>
-            <button className="mx-5 hover:text-red-500" value="now_playing" onClick={handleCategory}>
-                Now Playing
-            </button>
-            <button className="mx-5 hover:text-red-500" value="upcoming" onClick={handleCategory}>
-                Upcoming
-            </button> */}
-
-            <label className="hover:text-red-500">
+        <nav className="grid grid-cols-2 justify-items-center min-[400px]:flex min-[400px]:justify-evenly min-[400px]:p-5">
+            <label className="w-full hover:text-red-500 min-[400px]:w-auto">
                 <input className="absolute opacity-0 w-0 h-0 checked:bg-white checked:text-black peer" type="radio" name="radios" value="popular" onClick={handleCategory} />
-                <span className="p-2 peer-checked:text-black peer-checked:bg-white">Popular</span>
+                <span className="flex justify-center sm:p-2 peer-checked:text-black peer-checked:bg-white">Popular</span>
             </label>
 
-            <label className="hover:text-red-500">
+            <label className="w-full hover:text-red-500 min-[400px]:w-auto">
                 <input className="absolute opacity-0 w-0 h-0 checked:bg-white checked:text-black peer" type="radio" name="radios" value="top_rated" onClick={handleCategory} />
-                <span className="p-2 peer-checked:text-black peer-checked:bg-white">Top Rated</span>
+                <span className="flex justify-center sm:p-2 peer-checked:text-black peer-checked:bg-white">Top Rated</span>
             </label>
 
-            <label className="hover:text-red-500">
+            <label className="w-full hover:text-red-500 min-[400px]:w-auto">
                 <input className="absolute opacity-0 w-0 h-0 checked:bg-white checked:text-black peer" type="radio" name="radios" value="now_playing" onClick={handleCategory} />
-                <span className="p-2 peer-checked:text-black peer-checked:bg-white">Now Playing</span>
+                <span className="flex justify-center sm:p-2 peer-checked:text-black peer-checked:bg-white">Now Playing</span>
             </label>
 
-            <label className="hover:text-red-500">
+            <label className="w-full hover:text-red-500 min-[400px]:w-auto">
                 <input className="absolute opacity-0 w-0 h-0 checked:bg-white checked:text-black peer" type="radio" name="radios" value="upcoming" onClick={handleCategory} />
-                <span className="p-2 peer-checked:text-black peer-checked:bg-white">Upcoming</span>
+                <span className="flex justify-center sm:p-2 peer-checked:text-black peer-checked:bg-white">Upcoming</span>
             </label>
         </nav>
     );
