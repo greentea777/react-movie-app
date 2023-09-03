@@ -3,7 +3,7 @@ import Nav from "./Nav";
 import Category from "./Category";
 
 const Header = (handleCategory) => {
-  const [isBrowser, setBrowser] = useState(true);
+  const [isBrowser, setBrowser] = useState(window.matchMedia('(min-width: 640px)').matches);
 
   const isDesktop = e => {
     if (e.matches) {
@@ -11,7 +11,6 @@ const Header = (handleCategory) => {
     } else {
       setBrowser(false);
     }
-    console.log(e.matches);
   };
 
   useEffect(() => {
