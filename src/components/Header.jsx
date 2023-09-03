@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Nav from "./Nav";
 import Category from "./Category";
 
-const Header = () => {
+const Header = (handleCategory) => {
   const [navChangePosition, setNavChangePosition] = useState(true);
 
   const isDesktop = e => {
@@ -23,7 +23,7 @@ const Header = () => {
 
   return (
     <header className="bg-black text-white">
-      <Category navChangePosition={navChangePosition} />
+      <Category handleCategory={handleCategory} />
       <Nav navChangePosition={navChangePosition} />
     </header>
   );
