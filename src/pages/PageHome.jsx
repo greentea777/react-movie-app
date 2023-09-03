@@ -45,7 +45,16 @@ const PageHome = ({ movies, isLoading, genreList }) => {
       ) : (
         <p>Loading...</p>
       )}
-      {/* <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p> */}
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
+
     </main>
   );
 };

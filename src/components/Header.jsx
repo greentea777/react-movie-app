@@ -4,6 +4,7 @@ import Category from "./Category";
 
 const Header = (handleCategory) => {
   const [isBrowser, setBrowser] = useState(window.matchMedia('(min-width: 640px)').matches);
+  const [isHeaderVisible, setHeaderVisible] = useState(true);
 
   const isDesktop = e => {
     if (e.matches) {
