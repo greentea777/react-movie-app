@@ -26,7 +26,7 @@ const PageHome = ({ movies, isLoading, genreList }) => {
     ?.sort(() => Math.random() - 0.5)
     .slice(0, 5);
   return (
-    <main>
+    <main className="sm:mt-0 mt-16">
       {!isLoading ? (
         <swiper-container
           slidesPerView="auto"
