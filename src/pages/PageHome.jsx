@@ -26,7 +26,7 @@ const PageHome = ({ movies, isLoading, genreList }) => {
     ?.sort(() => Math.random() - 0.5)
     .slice(0, 5);
   return (
-    <main className="sm:mt-0 mt-16">
+    <main className="mt-[150px]">
       {!isLoading ? (
         <swiper-container
           slidesPerView="auto"
@@ -35,8 +35,8 @@ const PageHome = ({ movies, isLoading, genreList }) => {
           pagination-clickable="true"
           // pagination-dynamic-bullets="true"
           loop="true"
-        // autoplay-delay="2500"
-        // autoplay-disable-on-interaction="false"
+          // autoplay-delay="2500"
+          // autoplay-disable-on-interaction="false"
         >
           {randomMovie.map((movie, index) => (
             <HeroMovieCard key={index} movie={movie} genreList={genreList} />
@@ -45,16 +45,60 @@ const PageHome = ({ movies, isLoading, genreList }) => {
       ) : (
         <p>Loading...</p>
       )}
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum quasi voluptatum inventore error non suscipit dolor, facilis voluptatem dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate quos quibusdam at!</p>
-
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum
+        quasi voluptatum inventore error non suscipit dolor, facilis voluptatem
+        dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate
+        quos quibusdam at!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum
+        quasi voluptatum inventore error non suscipit dolor, facilis voluptatem
+        dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate
+        quos quibusdam at!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum
+        quasi voluptatum inventore error non suscipit dolor, facilis voluptatem
+        dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate
+        quos quibusdam at!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum
+        quasi voluptatum inventore error non suscipit dolor, facilis voluptatem
+        dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate
+        quos quibusdam at!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum
+        quasi voluptatum inventore error non suscipit dolor, facilis voluptatem
+        dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate
+        quos quibusdam at!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum
+        quasi voluptatum inventore error non suscipit dolor, facilis voluptatem
+        dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate
+        quos quibusdam at!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum
+        quasi voluptatum inventore error non suscipit dolor, facilis voluptatem
+        dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate
+        quos quibusdam at!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum
+        quasi voluptatum inventore error non suscipit dolor, facilis voluptatem
+        dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate
+        quos quibusdam at!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam harum
+        quasi voluptatum inventore error non suscipit dolor, facilis voluptatem
+        dignissimos perspiciatis soluta vel est cupiditate tenetur voluptate
+        quos quibusdam at!
+      </p>
     </main>
   );
 };
