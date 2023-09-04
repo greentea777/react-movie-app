@@ -26,7 +26,7 @@ function App() {
   };
   const fetchMovies = () => {
     fetch(
-      `${MOVIE_DB_API_URL}discover/movie?language=en-US&page=1&sort_by=popularity.desc`,
+      `${MOVIE_DB_API_URL}discover/movie?language=en-US&page=1&sort_by=popularity.desc&region=CA`,
       options
     )
       .then((response) => response.json())
@@ -49,7 +49,7 @@ function App() {
 
   const fetchMovieList = (category) => {
     fetch(
-      `${MOVIE_DB_API_URL}/movie/${category}?language=en-US&page=1`,
+      `${MOVIE_DB_API_URL}/movie/${category}?language=en-US&page=1&region=CA`,
       options
     )
       .then((response) => response.json())
@@ -72,8 +72,6 @@ function App() {
     fetchGenres();
   }, []);
 
-  console.log(movieList);
-
   return (
     <BrowserRouter>
       <div>
@@ -89,6 +87,7 @@ function App() {
                 movieList={movieList}
                 isLoading={isLoading}
                 category={category}
+                fetchMovieList={fetchMovieList}
               />
             }
           />

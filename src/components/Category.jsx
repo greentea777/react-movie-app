@@ -1,38 +1,86 @@
-import { NavLink } from "react-router-dom";
-
+import { useState, useEffect } from "react";
 const Category = ({ handleCategory }) => {
-  return (
-    // <nav className={navChangePosition ? "hidden" : "block p-5"}>
-    //     <ul className="flex flex-row justify-center">
-    //         <li className="mx-5 hover:text-red-500">
-    //             <NavLink to="/">Popular</NavLink>
-    //         </li>
-    //         <li className="mx-5 hover:text-red-500">
-    //             <NavLink to="/">Top Rated</NavLink>
-    //         </li>
-    //         <li className="mx-5 hover:text-red-500">
-    //             <NavLink to="/">Now Playing</NavLink>
-    //         </li>
-    //         <li className="mx-5 hover:text-red-500">
-    //             <NavLink to="/">Upcoming</NavLink>
-    //         </li>
-    //     </ul>
-    // </nav>
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  let prevScrollY = window.scrollY;
 
-    <div>
-      <button value="popular" onClick={handleCategory}>
-        Popular
-      </button>
-      <button value="top_rated" onClick={handleCategory}>
-        Top Rated
-      </button>
-      <button value="now_playing" onClick={handleCategory}>
-        Now Playing
-      </button>
-      <button value="upcoming" onClick={handleCategory}>
-        Upcoming
-      </button>
-    </div>
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    if (window.scrollY > 64) {
+      if (currentScrollY > prevScrollY) {
+        setIsHeaderVisible(false);
+      } else {
+        setIsHeaderVisible(true);
+      }
+      prevScrollY = currentScrollY;
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <nav
+      className={`transition-all duration-300 ease-in-out w-full bg-black grid grid-cols-2 justify-items-center min-[420px]:flex min-[420px]:justify-evenly  z-10 overflow-hidden ${
+        isHeaderVisible ? "min-[420px]:h-10 h-20" : "h-0"
+      }`}
+    >
+      <label className="w-full hover:text-red-500 min-[420px]:w-auto">
+        <input
+          className="absolute opacity-0 w-0 h-0 checked:bg-white checked:text-black peer"
+          type="radio"
+          name="radios"
+          value="popular"
+          onChange={handleCategory}
+        />
+        <span className="flex justify-center p-2 peer-checked:text-black peer-checked:bg-white whitespace-nowrap">
+          Popular
+        </span>
+      </label>
+
+      <label className="w-full hover:text-red-500 min-[420px]:w-auto">
+        <input
+          className="absolute opacity-0 w-0 h-0 checked:bg-white checked:text-black peer"
+          type="radio"
+          name="radios"
+          value="top_rated"
+          onChange={handleCategory}
+        />
+        <span className="flex justify-center p-2 peer-checked:text-black peer-checked:bg-white whitespace-nowrap">
+          Top Rated
+        </span>
+      </label>
+
+      <label className="w-full hover:text-red-500 min-[420px]:w-auto">
+        <input
+          className="absolute opacity-0 w-0 h-0 checked:bg-white checked:text-black peer"
+          type="radio"
+          name="radios"
+          value="now_playing"
+          onChange={handleCategory}
+        />
+        <span className="flex justify-center p-2 peer-checked:text-black peer-checked:bg-white whitespace-nowrap">
+          Now Playing
+        </span>
+      </label>
+
+      <label className="w-full hover:text-red-500 min-[420px]:w-auto">
+        <input
+          className="absolute opacity-0 w-0 h-0 checked:bg-white checked:text-black peer"
+          type="radio"
+          name="radios"
+          value="upcoming"
+          onChange={handleCategory}
+        />
+        <span className="flex justify-center p-2 peer-checked:text-black peer-checked:bg-white whitespace-nowrap">
+          Upcoming
+        </span>
+      </label>
+    </nav>
   );
 };
 

@@ -3,15 +3,16 @@ import Nav from "./Nav";
 import Category from "./Category";
 
 const Header = ({ handleCategory }) => {
-  const [navChangePosition, setNavChangePosition] = useState(true);
+  const [isBrowser, setIsBrowser] = useState(
+    window.matchMedia("(min-width: 640px)").matches
+  );
 
   const isDesktop = (e) => {
     if (e.matches) {
-      setNavChangePosition(true);
+      setIsBrowser(true);
     } else {
-      setNavChangePosition(false);
+      setIsBrowser(false);
     }
-    console.log(e.matches);
   };
 
   useEffect(() => {
@@ -22,12 +23,12 @@ const Header = ({ handleCategory }) => {
   }, []);
 
   return (
-    <header className="bg-black text-white">
-      <Category
-        navChangePosition={navChangePosition}
-        handleCategory={handleCategory}
-      />
-      <Nav navChangePosition={navChangePosition} />
+    <header className="fixed flex-col top-0 left-0 right-0 flex items-center bg-black text-white z-10 sm:flex-row">
+      <div className="flex justify-center p-2 sm:pl-5">
+        <div className="w-12 bg-red-700 h-12 z-50"></div>
+      </div>
+      {!isBrowser && <Category handleCategory={handleCategory} />}
+      <Nav isBrowser={isBrowser} />
     </header>
   );
 };
