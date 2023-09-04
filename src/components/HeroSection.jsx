@@ -3,8 +3,8 @@ import HeroMovieCard from "./HeroMovieCard";
 
 // import function to register Swiper custom elements
 import { register } from "swiper/element/bundle";
-
-const HeroSection = ({ movies, genreList }) => {
+register();
+const HeroSection = ({ movies, genres }) => {
   const swiperElRef = useRef(null);
 
   useEffect(() => {
@@ -20,18 +20,21 @@ const HeroSection = ({ movies, genreList }) => {
     Object.assign(swiperElRef.current, params);
     swiperElRef.current.initialize();
   }, []);
-
-  const randomMovie = movies.results
-    ?.slice(0, 5)
-    .sort(() => Math.random() - 0.5);
+  const randomMovie = movies?.results
+    ?.sort(() => Math.random() - 0.5)
+    .slice(0, 5);
 
   return (
     <section>
-      <swiper-container init="false" ref={swiperElRef}>
-        {randomMovie.map((movie, index) => (
-          <HeroMovieCard key={index} movie={movie} genreList={genreList} />
+      {/* {!isMoviesLoading ? ( */}
+      <swiper-container ref={swiperElRef}>
+        {randomMovie?.map((movie, index) => (
+          <HeroMovieCard key={index} movie={movie} genres={genres} />
         ))}
       </swiper-container>
+      {/* ) : (
+        <p>Loading...</p>
+      )} */}
     </section>
   );
 };

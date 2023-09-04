@@ -1,20 +1,12 @@
-const HeroMovieCard = ({ movie, genreList }) => {
-  const commonGenreId = genreList?.filter((value) =>
+const HeroMovieCard = ({ movie, genres }) => {
+  const commonGenreId = genres?.genres?.filter((value) =>
     movie.genre_ids.includes(value.id)
   );
-
-  //   console.log(commonValues);
 
   return (
     <swiper-slide>
       <div>
-        {/* <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.title}
-        /> */}
-
         {/* fallback if not img */}
-
         {movie.poster_path || movie.backdrop_path ? (
           <picture className="mx-auto w-fit relative before:from-black before:bg-gradient-to-t before:w-full before:h-full before:absolute before:from-10%">
             <source
