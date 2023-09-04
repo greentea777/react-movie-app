@@ -5,7 +5,7 @@ const Category = ({ handleCategory }) => {
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-    if (window.scrollY > 64) {
+    if (window.scrollY > 32) {
       if (currentScrollY > prevScrollY) {
         setIsHeaderVisible(false);
       } else {
@@ -25,7 +25,7 @@ const Category = ({ handleCategory }) => {
 
   return (
     <nav
-      className={`transition-all duration-300 ease-in-out w-full bg-black grid grid-cols-2 justify-items-center min-[420px]:flex min-[420px]:justify-evenly  z-10 overflow-hidden ${
+      className={`fixed top-16 transition-all duration-300 ease-in-out w-full bg-black text-white  grid grid-cols-2 justify-items-center min-[420px]:flex min-[420px]:justify-evenly  z-10 overflow-hidden ${
         isHeaderVisible ? "min-[420px]:h-10 h-20" : "h-0"
       }`}
     >

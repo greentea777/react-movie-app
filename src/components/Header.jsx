@@ -27,7 +27,7 @@ const Header = ({ handleCategory }) => {
       <div className="flex justify-center p-2 sm:pl-5">
         <div className="w-12 bg-red-700 h-12 z-50"></div>
       </div>
-      {!isBrowser && <Category handleCategory={handleCategory} />}
+      {/* {!isBrowser && <Category handleCategory={handleCategory} />} */}
       <Nav isBrowser={isBrowser} />
     </header>
   );
