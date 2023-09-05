@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
+import useMediaQuery from "../hooks/useMediaQuery";
 const Category = ({ handleCategory }) => {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   let prevScrollY = window.scrollY;
 
+  const isBrowser = useMediaQuery("(min-width: 420px)");
+  const [scrollLimit, setScrollLimit] = useState(isBrowser ? 32 : 64);
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-    if (window.scrollY > 32) {
+    if (window.scrollY > scrollLimit) {
       if (currentScrollY > prevScrollY) {
         setIsHeaderVisible(false);
       } else {
@@ -16,12 +19,17 @@ const Category = ({ handleCategory }) => {
   };
 
   useEffect(() => {
+    if (isBrowser) {
+      setScrollLimit(32);
+    } else {
+      setScrollLimit(64);
+    }
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isBrowser, scrollLimit]);
 
   return (
     <nav

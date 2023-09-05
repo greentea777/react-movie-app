@@ -1,5 +1,6 @@
 import { IconContext } from "react-icons";
 import { FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ListMovieCard = ({ movie, genreList }) => {
   const commonGenreId = genreList?.filter((value) =>
@@ -25,12 +26,14 @@ const ListMovieCard = ({ movie, genreList }) => {
 
       {/* fallback if not img */}
       {movie.backdrop_path ? (
-        <img
-          //   style={{ width: "150px" }}
-          className="rounded-2xl"
-          src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-          alt={movie.title}
-        />
+        <Link to={`/movie/${movie.id}/${movie.title}`}>
+          <img
+            //   style={{ width: "150px" }}
+            className="rounded-2xl"
+            src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+            alt={movie.title}
+          />
+        </Link>
       ) : (
         <p>images not found</p>
       )}

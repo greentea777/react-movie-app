@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import PageHome from "../pages/PageHome";
 import PageAbout from "../pages/PageAbout";
 import PageFavourite from "../pages/PageFavourite";
+import PageSingleMovie from "../pages/PageSingleMovie";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" exact element={<PageHome />} />
+          <Route path="/movie/:id/*" exact element={<PageSingleMovie />} />
           <Route path="/about" exact element={<PageAbout />} />
           <Route path="/favourite" exact element={<PageFavourite />} />
         </Routes>

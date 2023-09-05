@@ -25,7 +25,7 @@ const PageHome = () => {
     error: genresError,
   } = useFetch(`${MOVIE_DB_API_URL}genre/movie/list?language=en`, options);
   return (
-    <main className="mt-[150px]">
+    <main className="mt-[144px] min-[420px]:mt-[104px] sm:mt-[64px]">
       {!isMoviesLoading && !isGenresLoading ? (
         <HeroSection movies={movies} genres={genres} />
       ) : (
