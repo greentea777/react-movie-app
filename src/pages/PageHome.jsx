@@ -34,7 +34,7 @@ const PageHome = () => {
 
       {moviesError && <p>{moviesError}</p>}
 
-      {!isMoviesLoading && !isGenresLoading ? (
+      {!isGenresLoading ? (
         <ListMovieSection genres={genres} />
       ) : (
         <p>Loading...</p>

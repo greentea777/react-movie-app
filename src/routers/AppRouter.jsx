@@ -10,7 +10,7 @@ import PageSingleMovie from "../pages/PageSingleMovie";
 function App() {
   return (
     <BrowserRouter>
-      <div>
+      <div className="site-wrapper">
         <Header />
         <Routes>
           <Route path="/" exact element={<PageHome />} />
