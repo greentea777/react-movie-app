@@ -85,7 +85,9 @@ const ListMovieSection = ({ genres }) => {
           </IconContext.Provider>
         </button>
       </div>
-      {!isBrowser && <Category handleCategory={handleCategory} />}
+      {!isBrowser && (
+        <Category handleCategory={handleCategory} category={category} />
+      )}
 
       {movieListError && <p>{movieListError}</p>}
 
