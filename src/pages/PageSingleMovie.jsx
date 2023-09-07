@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import FavouriteButton from "../components/FavouriteButton";
 
 const MOVIE_DB_API_URL = "https://api.themoviedb.org/3/";
 const options = {
@@ -67,6 +68,8 @@ const PageSingleMovie = () => {
       ) : (
         <p>Loading...</p>
       )}
+
+      <FavouriteButton movie={singleMovie} />
     </section>
   );
 };

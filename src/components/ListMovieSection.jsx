@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import ListMovieCard from "./ListMovieCard";
 import { IconContext } from "react-icons";
-import { GoColumns } from "react-icons/go";
+import { HiViewColumns } from "react-icons/hi2";
 
 // import function to register Swiper custom elements
 import { register } from "swiper/element/bundle";
@@ -81,7 +81,7 @@ const ListMovieSection = ({ genres }) => {
           <IconContext.Provider
             value={{ size: "1.5em", className: "global-class-name" }}
           >
-            <GoColumns />
+            <HiViewColumns />
           </IconContext.Provider>
         </button>
       </div>
