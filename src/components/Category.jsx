@@ -8,14 +8,19 @@ const Category = ({ handleCategory, category }) => {
   const [scrollLimit, setScrollLimit] = useState(isBrowser ? 32 : 64);
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-    if (window.scrollY > scrollLimit) {
-      if (currentScrollY > prevScrollY) {
-        setIsHeaderVisible(false);
-      } else {
-        setIsHeaderVisible(true);
-      }
-      prevScrollY = currentScrollY;
+    const isAtPageBottom =
+      window.innerHeight + currentScrollY >= document.body.offsetHeight;
+
+    if (
+      isAtPageBottom ||
+      (window.scrollY > scrollLimit && currentScrollY > prevScrollY)
+    ) {
+      setIsHeaderVisible(false);
+    } else {
+      setIsHeaderVisible(true);
     }
+
+    prevScrollY = currentScrollY;
   };
 
   useEffect(() => {
