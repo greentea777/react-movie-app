@@ -10,11 +10,23 @@ const Nav = ({ isBrowser }) => {
       <ul className="sm:justify-end flex flex-row justify-evenly gap-5">
         <li className={isBrowser ? "hover:text-red-500" : "p-1"}>
           {isBrowser ? (
-            <NavLink to="/">Home</NavLink>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "text-blue-500 hover:text-red-500" : ""
+              }
+            >
+              Home
+            </NavLink>
           ) : (
-            <NavLink to="/">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "text-blue-500 hover:text-red-500" : ""
+              }
+            >
               <IconContext.Provider
-                value={{ size: "1.5em", className: "global-class-name" }}
+                value={{ size: "1.5em", className: "hover:text-red-500" }}
               >
                 <FaHouseDamage />
               </IconContext.Provider>
@@ -23,11 +35,23 @@ const Nav = ({ isBrowser }) => {
         </li>
         <li className={isBrowser ? "hover:text-red-500" : "p-1"}>
           {isBrowser ? (
-            <NavLink to="/about">About</NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive ? "text-blue-500 hover:text-red-500" : ""
+              }
+            >
+              About
+            </NavLink>
           ) : (
-            <NavLink to="/about">
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive ? "text-blue-500 hover:text-red-500" : ""
+              }
+            >
               <IconContext.Provider
-                value={{ size: "1.5em", className: "global-class-name" }}
+                value={{ size: "1.5em", className: "hover:text-red-500" }}
               >
                 <FaInfoCircle />
               </IconContext.Provider>
@@ -36,11 +60,23 @@ const Nav = ({ isBrowser }) => {
         </li>
         <li className={isBrowser ? "hover:text-red-500" : "p-1"}>
           {isBrowser ? (
-            <NavLink to="/favourite">Favourite</NavLink>
+            <NavLink
+              to="/favourite"
+              className={({ isActive }) =>
+                isActive ? "text-blue-500 hover:text-red-500" : ""
+              }
+            >
+              Favourite
+            </NavLink>
           ) : (
-            <NavLink to="/favourite">
+            <NavLink
+              to="/favourite"
+              className={({ isActive }) =>
+                isActive ? "text-blue-500 hover:text-red-500" : ""
+              }
+            >
               <IconContext.Provider
-                value={{ size: "1.5em", className: "global-class-name" }}
+                value={{ size: "1.5em", className: "hover:text-red-500" }}
               >
                 <FaHeart />
               </IconContext.Provider>

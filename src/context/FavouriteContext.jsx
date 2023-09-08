@@ -2,7 +2,7 @@ import { createContext, useEffect, useReducer } from "react";
 export const FavouriteListContext = createContext(null);
 export const FavouriteDispatchContext = createContext(null);
 
-const initialState = JSON.parse(localStorage.getItem("favourite")) || [];
+const initialState = JSON.parse(localStorage.getItem("favourites")) || [];
 
 export const FavouriteProvider = ({ children }) => {
   const [favouriteList, dispatch] = useReducer(
@@ -12,7 +12,7 @@ export const FavouriteProvider = ({ children }) => {
 
   useEffect(() => {
     // when favourite list updates, store to local storage
-    localStorage.setItem("favourite", JSON.stringify(favouriteList));
+    localStorage.setItem("favourites", JSON.stringify(favouriteList));
   }, [favouriteList]);
 
   return (

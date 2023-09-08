@@ -2,6 +2,7 @@ import "../index.css";
 import HeroSection from "../components/HeroSection";
 import ListMovieSection from "../components/ListMovieSection";
 import useFetch from "../hooks/useFetch";
+import SearchBar from "../components/SearchBar";
 
 const MOVIE_DB_API_URL = "https://api.themoviedb.org/3/";
 const options = {
@@ -33,7 +34,7 @@ const PageHome = () => {
       )}
 
       {moviesError && <p>{moviesError}</p>}
-
+      <SearchBar />
       {!isGenresLoading ? (
         <ListMovieSection genres={genres} />
       ) : (
