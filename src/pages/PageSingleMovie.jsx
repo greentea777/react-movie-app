@@ -27,11 +27,16 @@ const PageSingleMovie = () => {
   id = id * 1;
 
   const officalTrailerKey = singleMovie?.videos?.results?.find(
-    (video) => video.type?.toLowerCase() === "trailer" && video.official
+    (video) =>
+      video.type?.toLowerCase() === "trailer" &&
+      // if not found offical fallback to false
+      (video.official || !video.official)
   ).key;
-  const releaseDateCA = singleMovie?.release_dates?.results
-    ?.find((date) => date.iso_3166_1 === "CA")
-    .release_dates[0]?.release_date.slice(0, 10);
+  const releaseDateCA = singleMovie?.release_dates?.results?.find(
+    (date) => date.iso_3166_1 === "CA"
+  );
+
+  // .release_dates[0]?.release_date.slice(0, 10);
 
   const movieRuntimeByMinutes = singleMovie?.runtime;
   const hour = Math.floor(movieRuntimeByMinutes / 60);
@@ -41,6 +46,7 @@ const PageSingleMovie = () => {
     <section className="mt-20">
       {officalTrailerKey && (
         <iframe
+          allowFullScreen
           width="420"
           height="315"
           src={`https://www.youtube.com/embed/${officalTrailerKey}`}
@@ -55,7 +61,23 @@ const PageSingleMovie = () => {
             />
           )}
           <h2>{singleMovie?.original_title}</h2>
-          <time dateTime={releaseDateCA}>{releaseDateCA}</time>
+          {/* If no release date in CA , show message */}
+          {releaseDateCA ? (
+            <time
+              dateTime={releaseDateCA.release_dates[0]?.release_date.slice(
+                0,
+                10
+              )}
+            >
+              {`${
+                releaseDateCA.iso_3166_1
+              } - ${releaseDateCA.release_dates[0]?.release_date.slice(0, 10)}`}
+            </time>
+          ) : (
+            <p>No release date found for CA</p>
+          )}
+
+          {/* <time dateTime={releaseDateCA}>{releaseDateCA}</time> */}
           <time
             dateTime={`PT${hour}H${remainingMinutes}M`}
           >{`${hour}h ${remainingMinutes}m`}</time>

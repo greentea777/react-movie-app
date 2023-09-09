@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useFetch from "../hooks/useFetch";
+import { Link } from "react-router-dom";
 const MOVIE_DB_API_URL = "https://api.themoviedb.org/3/";
 const options = {
   method: "GET",
@@ -26,7 +27,7 @@ const SearchBar = () => {
   };
 
   return (
-    <>
+    <section className="relative z-30">
       <input
         className="p-5 w-full"
         type="search"
@@ -34,10 +35,25 @@ const SearchBar = () => {
         value={searchInput}
         onChange={handleChange}
       />
-      {movieSearchList?.results.map((item) => (
-        <h2>{item.title}</h2>
-      ))}
-    </>
+      <section className="absolute w-full bg-slate-600">
+        {movieSearchList?.results.map((item) => (
+          <Link to={`/movie/${item.id}/${item.title}`}>
+            <article>
+              {console.log(item)}
+              <h2>{item.title}</h2>
+              {item?.poster_path ? (
+                <img
+                  src={`https://image.tmdb.org/t/p/w92${item?.poster_path}`}
+                  alt={item.title}
+                />
+              ) : (
+                <p>No movie poster found</p>
+              )}
+            </article>
+          </Link>
+        ))}
+      </section>
+    </section>
   );
 };
 export default SearchBar;
