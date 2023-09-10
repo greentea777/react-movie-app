@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import FavouriteButton from "./FavouriteButton";
+import CircularRatingProgressbar from "./CircularRatingProgressbar";
 
 const ListMovieCard = ({ movie, genreList }) => {
   const commonGenreId = genreList?.filter((value) =>
@@ -36,6 +37,8 @@ const ListMovieCard = ({ movie, genreList }) => {
       ) : (
         <p>images not found</p>
       )}
+
+      <CircularRatingProgressbar rating={movie.vote_average} />
 
       <div className="absolute z-100 flex gap-1.5 left-0 right-0 flex-col leading-tight p-2 rounded-b-2xl">
         <div className="flex justify-between">
