@@ -26,12 +26,12 @@ const PageSingleMovie = () => {
 
   id = id * 1;
 
-  const officalTrailerKey = singleMovie?.videos?.results?.find(
+  const officalTrailer = singleMovie?.videos?.results?.find(
     (video) =>
       video.type?.toLowerCase() === "trailer" &&
       // if not found offical fallback to false
       (video.official || !video.official)
-  ).key;
+  );
   const releaseDateCA = singleMovie?.release_dates?.results?.find(
     (date) => date.iso_3166_1 === "CA"
   );
@@ -44,12 +44,12 @@ const PageSingleMovie = () => {
 
   return (
     <section className="mt-20">
-      {officalTrailerKey && (
+      {officalTrailer && (
         <iframe
           allowFullScreen
           width="420"
           height="315"
-          src={`https://www.youtube.com/embed/${officalTrailerKey}`}
+          src={`https://www.youtube.com/embed/${officalTrailer.key}`}
         ></iframe>
       )}
       {!singleMovieLoading ? (
@@ -57,10 +57,10 @@ const PageSingleMovie = () => {
           {singleMovie?.poster_path && (
             <img
               src={`https://image.tmdb.org/t/p/w500${singleMovie?.poster_path}`}
-              alt={singleMovie?.original_title}
+              alt={singleMovie?.title}
             />
           )}
-          <h2>{singleMovie?.original_title}</h2>
+          <h2>{singleMovie?.title}</h2>
           {/* If no release date in CA , show message */}
           {releaseDateCA ? (
             <time

@@ -3,13 +3,11 @@ import useMediaQuery from "../hooks/useMediaQuery";
 
 const Header = () => {
   const isBrowser = useMediaQuery("(min-width: 640px)");
-
   return (
-    <header className="fixed flex-col top-0 left-0 right-0 flex items-center bg-black text-white z-10 sm:flex-row">
+    <header className="fixed flex-col top-0 left-0 right-0 flex items-center bg-black text-white sm:flex-row z-50">
       <div className="flex justify-center p-2 sm:pl-5">
-        <div className="w-12 bg-red-700 h-12 z-50"></div>
+        <div className="w-12 bg-red-700 h-12"></div>
       </div>
-      {/* {!isBrowser && <Category handleCategory={handleCategory} />} */}
       <Nav isBrowser={isBrowser} />
     </header>
   );

@@ -67,58 +67,6 @@ const Category = ({ handleCategory, category }) => {
           </span>
         </label>
       ))}
-
-      {/* <label className="w-full hover:text-red-500 min-[420px]:w-auto">
-        <input
-          className="absolute opacity-0 w-0 h-0 checked:bg-white checked:text-black peer"
-          type="radio"
-          name="radios"
-          value="popular"
-          onChange={handleCategory}
-        />
-        <span className="flex justify-center p-2 peer-checked:text-black peer-checked:bg-white whitespace-nowrap">
-          Popular
-        </span>
-      </label>
-
-      <label className="w-full hover:text-red-500 min-[420px]:w-auto">
-        <input
-          className="absolute opacity-0 w-0 h-0 checked:bg-white checked:text-black peer"
-          type="radio"
-          name="radios"
-          value="top_rated"
-          onChange={handleCategory}
-        />
-        <span className="flex justify-center p-2 peer-checked:text-black peer-checked:bg-white whitespace-nowrap">
-          Top Rated
-        </span>
-      </label>
-
-      <label className="w-full hover:text-red-500 min-[420px]:w-auto">
-        <input
-          className="absolute opacity-0 w-0 h-0 checked:bg-white checked:text-black peer"
-          type="radio"
-          name="radios"
-          value="now_playing"
-          onChange={handleCategory}
-        />
-        <span className="flex justify-center p-2 peer-checked:text-black peer-checked:bg-white whitespace-nowrap">
-          Now Playing
-        </span>
-      </label>
-
-      <label className="w-full hover:text-red-500 min-[420px]:w-auto">
-        <input
-          className="absolute opacity-0 w-0 h-0 checked:bg-white checked:text-black peer"
-          type="radio"
-          name="radios"
-          value="upcoming"
-          onChange={handleCategory}
-        />
-        <span className="flex justify-center p-2 peer-checked:text-black peer-checked:bg-white whitespace-nowrap">
-          Upcoming
-        </span>
-      </label> */}
     </nav>
   );
 };

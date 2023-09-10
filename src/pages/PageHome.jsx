@@ -2,7 +2,6 @@ import "../index.css";
 import HeroSection from "../components/HeroSection";
 import ListMovieSection from "../components/ListMovieSection";
 import useFetch from "../hooks/useFetch";
-import SearchBar from "../components/SearchBar";
 
 const MOVIE_DB_API_URL = "https://api.themoviedb.org/3/";
 const options = {
@@ -26,7 +25,7 @@ const PageHome = () => {
     error: genresError,
   } = useFetch(`${MOVIE_DB_API_URL}genre/movie/list?language=en`, options);
   return (
-    <main className="mt-[144px] min-[420px]:mt-[104px] sm:mt-[64px]">
+    <main className="mt-[144px] min-[420px]:mt-[104px] sm:mt-[64px] pb-20">
       {!isMoviesLoading && !isGenresLoading ? (
         <HeroSection movies={movies} genres={genres} />
       ) : (
@@ -34,7 +33,6 @@ const PageHome = () => {
       )}
 
       {moviesError && <p>{moviesError}</p>}
-      <SearchBar />
       {!isGenresLoading ? (
         <ListMovieSection genres={genres} />
       ) : (
