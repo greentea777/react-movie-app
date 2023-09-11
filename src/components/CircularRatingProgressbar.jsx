@@ -27,7 +27,7 @@ const CircularRatingProgressbar = ({ rating }) => {
       : `rgba(36, 246, 113, ${colorPercentage})`;
 
   return (
-    <div style={{ width: 50, height: 50 }}>
+    <div className="min-w-[50px] w-14">
       <CircularProgressbar
         className="test"
         value={percentage}

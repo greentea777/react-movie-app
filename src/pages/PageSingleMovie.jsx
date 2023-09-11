@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import useMediaQuery from "../hooks/useMediaQuery";
 import FavouriteButton from "../components/FavouriteButton";
+import CircularRatingProgressbar from "../components/CircularRatingProgressbar";
 
 const MOVIE_DB_API_URL = "https://api.themoviedb.org/3/";
 const options = {
@@ -57,31 +58,34 @@ const PageSingleMovie = () => {
           )}
 
           <article className="py-5 max-w-[300px] mx-auto sm:px-10 sm:max-w-none">
-            <div className="flex justify-between">
+            <div className="flex justify-between gap-5 items-center">
               <h1 className="text-4xl">{singleMovie?.title}</h1>
-              <FavouriteButton movie={singleMovie} />
+              <CircularRatingProgressbar rating={singleMovie?.vote_average} />
             </div>
 
             {/* If no release date in CA , show message */}
-            {releaseDateCA ? (
-              <p className="mt-2">
-                <time
-                  dateTime={releaseDateCA.release_dates[0]?.release_date.slice(
-                    0,
-                    10
-                  )}
-                >
-                  {`${
-                    releaseDateCA.iso_3166_1
-                  } - ${releaseDateCA.release_dates[0]?.release_date.slice(
-                    0,
-                    10
-                  )}`}
-                </time>
-              </p>
-            ) : (
-              <p>No release date found for CA</p>
-            )}
+            <div className="flex items-center justify-between my-5">
+              {releaseDateCA ? (
+                <p className="mt-2">
+                  <time
+                    dateTime={releaseDateCA.release_dates[0]?.release_date.slice(
+                      0,
+                      10
+                    )}
+                  >
+                    {`${
+                      releaseDateCA.iso_3166_1
+                    } - ${releaseDateCA.release_dates[0]?.release_date.slice(
+                      0,
+                      10
+                    )}`}
+                  </time>
+                </p>
+              ) : (
+                <p>No release date found for CA</p>
+              )}
+              <FavouriteButton movie={singleMovie} />
+            </div>
 
             <p className="mt-2">
               {singleMovie?.genres.map((genre, index, genresArray) => (
@@ -122,14 +126,13 @@ const PageSingleMovie = () => {
             </div>
           </div>
         ) : (
-          <button className="flex justify-center mt-2 mx-auto hover:text-white hover:bg-black p-3 border-solid border-2 border-black ">
-            <a
-              href={`https://www.youtube.com/watch?v=${officalTrailer.key}`}
-              target="_blank"
-            >
-              Watch Trailer!
-            </a>
-          </button>
+          <a
+            className="flex justify-center mt-2 mx-auto hover:text-white hover:bg-black p-3 border-solid border-2 border-black"
+            href={`https://www.youtube.com/watch?v=${officalTrailer.key}`}
+            target="_blank"
+          >
+            Watch Trailer!
+          </a>
         ))}
     </section>
   );
