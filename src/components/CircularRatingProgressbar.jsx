@@ -29,7 +29,6 @@ const CircularRatingProgressbar = ({ rating }) => {
   return (
     <div className="min-w-[50px] w-14">
       <CircularProgressbar
-        className="test"
         value={percentage}
         text={`${percentage}%`}
         strokeWidth={12}

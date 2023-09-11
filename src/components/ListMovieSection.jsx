@@ -8,16 +8,8 @@ import { register } from "swiper/element/bundle";
 import Category from "./Category";
 import useMediaQuery from "../hooks/useMediaQuery";
 import useFetch from "../hooks/useFetch";
+import { MOVIE_DB_API_URL, options } from "../globals/APIVariables";
 
-const MOVIE_DB_API_URL = "https://api.themoviedb.org/3/";
-const options = {
-  method: "GET",
-  headers: {
-    accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNWY0ZDUzZGYzOWI4YTIwYmFlNTcwNDg0YmFiM2NjMSIsInN1YiI6IjY0ZWUzMjY3ZTBjYTdmMDBhZTM4MGFkYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.iUCQ6FTPC4_DjGiswyCvLGlWbeHWSe42IxwHAdl9m_k",
-  },
-};
 const ListMovieSection = ({ genres }) => {
   const [category, setCategory] = useState("popular");
   const [displayMethod, setDisplayMethod] = useState("col");
