@@ -45,11 +45,12 @@ const PageSingleMovie = () => {
   const remainingMinutes = movieRuntimeByMinutes % 60;
 
   return (
-    <section className="mt-20 mb-20 h-screen">
+    <section className="mt-20 mb-20">
       {!singleMovieLoading ? (
         <div className="flex flex-col max-w-5xl mx-auto px-5 sm:flex-row">
           {singleMovie?.poster_path && (
-            <img className="m-auto"
+            <img
+              className="m-auto"
               src={`https://image.tmdb.org/t/p/w300${singleMovie?.poster_path}`}
               alt={singleMovie?.title}
             />
@@ -70,8 +71,12 @@ const PageSingleMovie = () => {
                     10
                   )}
                 >
-                  {`${releaseDateCA.iso_3166_1
-                    } - ${releaseDateCA.release_dates[0]?.release_date.slice(0, 10)}`}
+                  {`${
+                    releaseDateCA.iso_3166_1
+                  } - ${releaseDateCA.release_dates[0]?.release_date.slice(
+                    0,
+                    10
+                  )}`}
                 </time>
               </p>
             ) : (
@@ -94,7 +99,9 @@ const PageSingleMovie = () => {
               >{`${hour}h ${remainingMinutes}m`}</time>
             </p>
 
-            {singleMovie?.tagline && <p className="mt-2">{singleMovie?.tagline}</p>}
+            {singleMovie?.tagline && (
+              <p className="mt-2">{singleMovie?.tagline}</p>
+            )}
 
             <p className="mt-2">{singleMovie?.overview}</p>
           </article>
@@ -103,8 +110,8 @@ const PageSingleMovie = () => {
         <p>Loading...</p>
       )}
 
-      {officalTrailer && (
-        isBrowser ?
+      {officalTrailer &&
+        (isBrowser ? (
           <div className="max-w-5xl mx-auto mt-5">
             <div className="relative w-full pt-[56.25%] overflow-hidden">
               <iframe
@@ -114,13 +121,16 @@ const PageSingleMovie = () => {
               ></iframe>
             </div>
           </div>
-          :
+        ) : (
           <button className="flex justify-center mt-2 mx-auto hover:text-white hover:bg-black p-3 border-solid border-2 border-black ">
             <a
               href={`https://www.youtube.com/watch?v=${officalTrailer.key}`}
               target="_blank"
-            >Watch Trailer!</a></button>
-      )}
+            >
+              Watch Trailer!
+            </a>
+          </button>
+        ))}
     </section>
   );
 };
