@@ -45,7 +45,7 @@ const PageSingleMovie = () => {
   const remainingMinutes = movieRuntimeByMinutes % 60;
 
   return (
-    <section className="mt-20 mb-20">
+    <section className="mt-20 mb-20 h-screen">
       {!singleMovieLoading ? (
         <div className="flex flex-col max-w-5xl mx-auto px-5 sm:flex-row">
           {singleMovie?.poster_path && (
@@ -94,9 +94,7 @@ const PageSingleMovie = () => {
               >{`${hour}h ${remainingMinutes}m`}</time>
             </p>
 
-            <p className="mt-2">
-              {singleMovie?.tagline && <p>{singleMovie?.tagline}</p>}
-            </p>
+            {singleMovie?.tagline && <p className="mt-2">{singleMovie?.tagline}</p>}
 
             <p className="mt-2">{singleMovie?.overview}</p>
           </article>
@@ -107,12 +105,14 @@ const PageSingleMovie = () => {
 
       {officalTrailer && (
         isBrowser ?
-          <div className="relative max-w-5xl pt-[30.25%] overflow-hidden mx-auto mt-10">
-            <iframe
-              className="absolute top-0 left-0 bottom-0 right-0 w-full h-full px-5"
-              allowFullScreen
-              src={`https://www.youtube.com/embed/${officalTrailer.key}`}
-            ></iframe>
+          <div className="max-w-5xl mx-auto mt-5">
+            <div className="relative w-full pt-[56.25%] overflow-hidden">
+              <iframe
+                className="absolute top-0 left-0 bottom-0 right-0 w-full h-full px-5"
+                allowFullScreen
+                src={`https://www.youtube.com/embed/${officalTrailer.key}`}
+              ></iframe>
+            </div>
           </div>
           :
           <button className="flex justify-center mt-2 mx-auto hover:text-white hover:bg-black p-3 border-solid border-2 border-black ">

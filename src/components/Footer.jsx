@@ -3,7 +3,7 @@ import { getYear } from "../utilities/utilities";
 const Footer = () => {
   return (
     <footer>
-      <p>&copy; {getYear()} Yang & Willy.</p>
+      <p>&copy; {getYear()} Yang & Willy & Sally.</p>
     </footer>
   );
 };
