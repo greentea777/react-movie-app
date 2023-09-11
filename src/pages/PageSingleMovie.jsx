@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import useMediaQuery from "../hooks/useMediaQuery";
 import FavouriteButton from "../components/FavouriteButton";
 
 const MOVIE_DB_API_URL = "https://api.themoviedb.org/3/";
@@ -14,6 +15,7 @@ const options = {
 
 const PageSingleMovie = () => {
   let { id } = useParams();
+  const isBrowser = useMediaQuery("(min-width: 640px)");
 
   const {
     data: singleMovie,
@@ -43,55 +45,82 @@ const PageSingleMovie = () => {
   const remainingMinutes = movieRuntimeByMinutes % 60;
 
   return (
-    <section className="mt-20">
-      {officalTrailer && (
-        <iframe
-          allowFullScreen
-          width="420"
-          height="315"
-          src={`https://www.youtube.com/embed/${officalTrailer.key}`}
-        ></iframe>
-      )}
+    <section className="mt-20 mb-20">
       {!singleMovieLoading ? (
-        <article>
+        <div className="flex flex-col max-w-5xl mx-auto px-5 sm:flex-row">
           {singleMovie?.poster_path && (
-            <img
-              src={`https://image.tmdb.org/t/p/w500${singleMovie?.poster_path}`}
+            <img className="m-auto"
+              src={`https://image.tmdb.org/t/p/w300${singleMovie?.poster_path}`}
               alt={singleMovie?.title}
             />
           )}
-          <h2>{singleMovie?.title}</h2>
-          {/* If no release date in CA , show message */}
-          {releaseDateCA ? (
-            <time
-              dateTime={releaseDateCA.release_dates[0]?.release_date.slice(
-                0,
-                10
-              )}
-            >
-              {`${
-                releaseDateCA.iso_3166_1
-              } - ${releaseDateCA.release_dates[0]?.release_date.slice(0, 10)}`}
-            </time>
-          ) : (
-            <p>No release date found for CA</p>
-          )}
 
-          {/* <time dateTime={releaseDateCA}>{releaseDateCA}</time> */}
-          <time
-            dateTime={`PT${hour}H${remainingMinutes}M`}
-          >{`${hour}h ${remainingMinutes}m`}</time>
-          {singleMovie?.tagline && <p>{singleMovie?.tagline}</p>}
-          {singleMovie?.genres.map((genre, index) => (
-            <span key={index}>{genre.name}</span>
-          ))}
-          <p>{singleMovie?.overview}</p>
-        </article>
+          <article className="py-5 max-w-[300px] mx-auto sm:px-10 sm:max-w-none">
+            <div className="flex justify-between">
+              <h1 className="text-4xl">{singleMovie?.title}</h1>
+              <FavouriteButton movie={singleMovie} />
+            </div>
+
+            {/* If no release date in CA , show message */}
+            {releaseDateCA ? (
+              <p className="mt-2">
+                <time
+                  dateTime={releaseDateCA.release_dates[0]?.release_date.slice(
+                    0,
+                    10
+                  )}
+                >
+                  {`${releaseDateCA.iso_3166_1
+                    } - ${releaseDateCA.release_dates[0]?.release_date.slice(0, 10)}`}
+                </time>
+              </p>
+            ) : (
+              <p>No release date found for CA</p>
+            )}
+
+            <p className="mt-2">
+              {singleMovie?.genres.map((genre, index, genresArray) => (
+                <span key={index}>
+                  {genre.name}
+                  {index === genresArray.length - 1 ? "" : " • "}
+                </span>
+              ))}
+            </p>
+
+            {/* <time dateTime={releaseDateCA}>{releaseDateCA}</time> */}
+            <p className="mt-2">
+              <time
+                dateTime={`PT${hour}H${remainingMinutes}M`}
+              >{`${hour}h ${remainingMinutes}m`}</time>
+            </p>
+
+            <p className="mt-2">
+              {singleMovie?.tagline && <p>{singleMovie?.tagline}</p>}
+            </p>
+
+            <p className="mt-2">{singleMovie?.overview}</p>
+          </article>
+        </div>
       ) : (
         <p>Loading...</p>
       )}
 
-      <FavouriteButton movie={singleMovie} />
+      {officalTrailer && (
+        isBrowser ?
+          <div className="relative max-w-5xl pt-[30.25%] overflow-hidden mx-auto mt-10">
+            <iframe
+              className="absolute top-0 left-0 bottom-0 right-0 w-full h-full px-5"
+              allowFullScreen
+              src={`https://www.youtube.com/embed/${officalTrailer.key}`}
+            ></iframe>
+          </div>
+          :
+          <button className="flex justify-center mt-2 mx-auto hover:text-white hover:bg-black p-3 border-solid border-2 border-black ">
+            <a
+              href={`https://www.youtube.com/watch?v=${officalTrailer.key}`}
+              target="_blank"
+            >Watch Trailer!</a></button>
+      )}
     </section>
   );
 };
