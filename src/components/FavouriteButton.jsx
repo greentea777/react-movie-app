@@ -22,7 +22,7 @@ const FavouriteButton = ({ movie }) => {
           id: movie.id,
           movie: movie,
         });
-        setIsAnimating(true); // 启用动画
+        setIsAnimating(true);
       }}
     >
       <IconContext.Provider
