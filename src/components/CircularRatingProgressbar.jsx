@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-const CircularRatingProgressbar = ({ rating }) => {
+const CircularRatingProgressbar = ({ rating, progressBarClass = "" }) => {
   const [percentage, setPercentage] = useState(0);
   const endPercentage = rating * 10;
 
@@ -23,13 +23,12 @@ const CircularRatingProgressbar = ({ rating }) => {
     colorPercentage < 0.5
       ? `rgba(246, 36, 43, ${colorPercentage})`
       : colorPercentage < 0.7
-      ? `rgba(246, 169, 36, ${colorPercentage})`
-      : `rgba(36, 246, 113, ${colorPercentage})`;
+        ? `rgba(246, 169, 36, ${colorPercentage})`
+        : `rgba(36, 246, 113, ${colorPercentage})`;
 
   return (
-    <div className="min-w-[50px] w-14">
+    <div className={`min-w-[50px] w-14 ${progressBarClass}`}>
       <CircularProgressbar
-        className="test"
         value={percentage}
         text={`${percentage}%`}
         strokeWidth={12}

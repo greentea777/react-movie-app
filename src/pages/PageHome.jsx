@@ -39,24 +39,6 @@ const PageHome = () => {
         <p>Loading...</p>
       )}
       {genresError && <p>{genresError}</p>}
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores
-        harum ipsa modi, temporibus quisquam reiciendis quas inventore libero
-        dicta? Tempore beatae quidem amet voluptate fugiat! Repellendus omnis
-        libero illo nostrum?
-      </p>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores
-        harum ipsa modi, temporibus quisquam reiciendis quas inventore libero
-        dicta? Tempore beatae quidem amet voluptate fugiat! Repellendus omnis
-        libero illo nostrum?
-      </p>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores
-        harum ipsa modi, temporibus quisquam reiciendis quas inventore libero
-        dicta? Tempore beatae quidem amet voluptate fugiat! Repellendus omnis
-        libero illo nostrum?
-      </p>
     </main>
   );
 };
