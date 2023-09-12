@@ -12,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <FavouriteProvider>
-        <div className="site-wrapper">
+        <div className="site-wrapper max-w-screen-xl mx-auto">
           <Header />
           <Routes>
             <Route path="/" exact element={<PageHome />} />

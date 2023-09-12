@@ -20,7 +20,7 @@ const ListMovieSection = ({ genres }) => {
     loading: isMovieListLoading,
     error: movieListError,
   } = useFetch(
-    `${MOVIE_DB_API_URL}/movie/${category}?language=en-US&page=1&region=CA`,
+    `${MOVIE_DB_API_URL}movie/${category}?language=en-US&page=1&region=CA`,
     options
   );
 
@@ -66,9 +66,8 @@ const ListMovieSection = ({ genres }) => {
         <h2>{category}</h2>
         <button
           onClick={toggleDisplayMethod}
-          className={`transition-all duration-300 ease-in-out ${
-            displayMethod === "col" ? "rotate-0" : "rotate-90"
-          }`}
+          className={`transition-all duration-300 ease-in-out ${displayMethod === "col" ? "rotate-0" : "rotate-90"
+            }`}
         >
           <IconContext.Provider
             value={{ size: "1.5em", className: "global-class-name" }}
@@ -88,7 +87,7 @@ const ListMovieSection = ({ genres }) => {
           {!isMovieListLoading ? (
             movieList?.results?.map((movie, index) => (
               <swiper-slide key={index} style={{ width: "80%" }}>
-                <ListMovieCard movie={movie} genreList={genres?.genres} />{" "}
+                <ListMovieCard movie={movie} genreList={genres?.genres} />
               </swiper-slide>
             ))
           ) : (
