@@ -7,21 +7,32 @@ import {
   FavouriteDispatchContext,
 } from "../context/FavouriteContext";
 
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addFavourite } from "../features/favs/favsSlice";
+
 const FavouriteButton = ({ movie }) => {
-  const dispatch = useContext(FavouriteDispatchContext);
-  const favouriteList = useContext(FavouriteListContext);
+  // const dispatch = useContext(FavouriteDispatchContext);
+  // const favouriteList = useContext(FavouriteListContext);
+  const favouriteList = useSelector((state) => state.favs.movies);
   const isFavourite = favouriteList?.find((item) => item.id === movie?.id);
+
   const [isAnimating, setIsAnimating] = useState(false);
 
+  const dispatch = useDispatch();
   return (
     <button
       className={isAnimating && isFavourite ? "animate-ping-once" : ""}
+      // onClick={() => {
+      //   dispatch({
+      //     type: "toggle",
+      //     id: movie.id,
+      //     movie: movie,
+      //   });
+      //   setIsAnimating(true);
+      // }}
       onClick={() => {
-        dispatch({
-          type: "toggle",
-          id: movie.id,
-          movie: movie,
-        });
+        dispatch(addFavourite(movie));
         setIsAnimating(true);
       }}
     >
