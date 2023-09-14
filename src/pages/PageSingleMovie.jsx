@@ -14,7 +14,7 @@ const PageSingleMovie = () => {
     loading: singleMovieLoading,
     error: singleMovieError,
   } = useFetch(
-    `${MOVIE_DB_API_URL}/movie/${id}?append_to_response=videos%2Crelease_dates%2Ccredits&language=en-US`,
+    `${MOVIE_DB_API_URL}/movie/${id}?append_to_response=videos%2Crelease_dates%2Ccredits&language=en-CA`,
     options
   );
 
@@ -27,9 +27,10 @@ const PageSingleMovie = () => {
       (video.official || !video.official)
   );
   const releaseDateCA = singleMovie?.release_dates?.results?.find(
-    (date) => date.iso_3166_1 === "CA"
+    (date) => date.iso_3166_1 === "CA" || date.iso_3166_1 === "US"
   );
 
+  console.log(singleMovie?.release_date);
   // .release_dates[0]?.release_date.slice(0, 10);
 
   const movieRuntimeByMinutes = singleMovie?.runtime;
@@ -73,7 +74,11 @@ const PageSingleMovie = () => {
                   </time>
                 </p>
               ) : (
-                <p>No release date found for CA</p>
+                <p className="mt-2">
+                  <time dateTime={singleMovie?.release_date}>
+                    {singleMovie?.release_date}
+                  </time>
+                </p>
               )}
               <FavouriteButton movie={singleMovie} />
             </div>

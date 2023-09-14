@@ -45,8 +45,9 @@ const Category = ({ handleCategory, category }) => {
 
   return (
     <nav
-      className={`fixed top-16 transition-all duration-300 ease-in-out w-full bg-black text-white grid grid-cols-2 justify-items-center min-[420px]:flex min-[420px]:justify-evenly z-10 overflow-hidden ${isHeaderVisible ? "min-[420px]:h-10 h-20" : "h-0"
-        }`}
+      className={`fixed top-16 left-0 transition-all duration-300 ease-in-out w-full bg-[#000000c5] text-white grid grid-cols-2 justify-items-center min-[420px]:flex min-[420px]:justify-evenly z-10 overflow-hidden ${
+        isHeaderVisible ? "min-[420px]:h-10 h-20" : "h-0"
+      }`}
     >
       {categoryButtons.map((button, index) => (
         <label

@@ -19,7 +19,7 @@ const Nav = ({ isBrowser }) => {
     setSearchInput("");
   };
   return (
-    <nav className="sm:relative bottom-0 w-full fixed p-5 bg-black text-white z-40">
+    <nav className="sm:relative bottom-0 w-full fixed p-5 bg-black sm:bg-transparent text-white z-40">
       <SearchBar
         handleSearchBar={handleSearchBar}
         toggleSearchBar={toggleSearchBar}
@@ -28,12 +28,14 @@ const Nav = ({ isBrowser }) => {
         handleNavLinkClick={handleNavLinkClick}
       />
 
-      <ul className="sm:justify-end flex flex-row justify-evenly gap-5">
+      <ul className="sm:justify-end flex flex-row justify-evenly gap-5 ">
         <li className={isBrowser ? "p-0" : "p-1"}>
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive ? "text-blue-500 hover:text-red-500" : ""
+              isActive
+                ? "text-blue-500 hover:text-red-500"
+                : "hover:text-red-500"
             }
             onClick={handleNavLinkClick}
           >
@@ -52,7 +54,9 @@ const Nav = ({ isBrowser }) => {
           <NavLink
             to="/about"
             className={({ isActive }) =>
-              isActive ? "text-blue-500 hover:text-red-500" : ""
+              isActive
+                ? "text-blue-500 hover:text-red-500"
+                : "hover:text-red-500"
             }
             onClick={handleNavLinkClick}
           >
@@ -71,7 +75,9 @@ const Nav = ({ isBrowser }) => {
           <NavLink
             to="/favourite"
             className={({ isActive }) =>
-              isActive ? "text-blue-500 hover:text-red-500" : ""
+              isActive
+                ? "text-blue-500 hover:text-red-500"
+                : "hover:text-red-500"
             }
             onClick={handleNavLinkClick}
           >

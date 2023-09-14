@@ -6,9 +6,9 @@ import { MOVIE_DB_API_URL, options } from "../globals/APIVariables";
 
 const PageHome = () => {
   const {
-    data: movies,
-    loading: isMoviesLoading,
-    error: moviesError,
+    data: trendingMovies,
+    loading: isTrendingMoviesLoading,
+    error: trendingMoviesError,
   } = useFetch(`${MOVIE_DB_API_URL}trending/movie/day?language=en-US`, options);
 
   const {
@@ -17,14 +17,14 @@ const PageHome = () => {
     error: genresError,
   } = useFetch(`${MOVIE_DB_API_URL}genre/movie/list?language=en`, options);
   return (
-    <main className="mt-[144px] min-[420px]:mt-[104px] sm:mt-[64px] pb-20">
-      {!isMoviesLoading && !isGenresLoading ? (
-        <HeroSection movies={movies} genres={genres} />
+    <main className="mt-[144px] min-[420px]:mt-[104px] sm:mt-0 pb-15">
+      {!isTrendingMoviesLoading && !isGenresLoading ? (
+        <HeroSection movies={trendingMovies} genres={genres} />
       ) : (
         <p>Loading...</p>
       )}
 
-      {moviesError && <p>{moviesError}</p>}
+      {trendingMoviesError && <p>{trendingMoviesError}</p>}
       {!isGenresLoading ? (
         <ListMovieSection genres={genres} />
       ) : (

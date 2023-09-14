@@ -6,4 +6,16 @@ swiper-container {
   --swiper-pagination-bullet-inactive-color: white;
   --swiper-pagination-bullet-inactive-opacity: 0.8;
   /* --swiper-pagination-color: var(--ion-color-primary, orange); */
+  /* scroll bar */
+  --swiper-scrollbar-bg-color: rgba(255, 255, 255, 0.3);
+  --swiper-scrollbar-drag-bg-color: rgba(255, 255, 255, 0.8);
+  --swiper-scrollbar-size: 1.5px;
+  --swiper-scrollbar-bottom: 25%;
+  --swiper-scrollbar-sides-offset: 5%;
 }
+
+.test {
+  background-color: #ffffff40;
+}
+
+/* bg-[#262629] */
