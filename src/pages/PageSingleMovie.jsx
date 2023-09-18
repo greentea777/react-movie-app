@@ -4,6 +4,7 @@ import useMediaQuery from "../hooks/useMediaQuery";
 import FavouriteButton from "../components/FavouriteButton";
 import CircularRatingProgressbar from "../components/CircularRatingProgressbar";
 import { MOVIE_DB_API_URL, options } from "../globals/APIVariables";
+import Loading from "../components/Loading";
 
 const PageSingleMovie = () => {
   let { id } = useParams();
@@ -20,6 +21,12 @@ const PageSingleMovie = () => {
 
   id = id * 1;
 
+  const cast = singleMovie?.credits?.cast?.filter(
+    (cast) => cast.known_for_department === "Acting" && cast.order < 16
+  );
+
+  console.log(cast);
+
   const officalTrailer = singleMovie?.videos?.results?.find(
     (video) =>
       video.type?.toLowerCase() === "trailer" &&
@@ -30,7 +37,6 @@ const PageSingleMovie = () => {
     (date) => date.iso_3166_1 === "CA" || date.iso_3166_1 === "US"
   );
 
-  console.log(singleMovie?.release_date);
   // .release_dates[0]?.release_date.slice(0, 10);
 
   const movieRuntimeByMinutes = singleMovie?.runtime;
@@ -38,25 +44,38 @@ const PageSingleMovie = () => {
   const remainingMinutes = movieRuntimeByMinutes % 60;
 
   return (
-    <section className="mt-20 mb-20">
-      {!singleMovieLoading ? (
-        <div className="flex flex-col max-w-5xl mx-auto px-5 sm:flex-row">
-          {singleMovie?.poster_path && (
-            <img
-              className="m-auto"
-              src={`https://image.tmdb.org/t/p/w300${singleMovie?.poster_path}`}
-              alt={singleMovie?.title}
-            />
-          )}
+    <main className="flex-1">
+      <section className="mt-20 mb-20">
+        {!singleMovieLoading ? (
+          <div className="flex flex-col max-w-6xl mx-auto px-5 sm:flex-row">
+            {singleMovie?.poster_path ? (
+              <img
+                className="m-auto rounded-lg"
+                src={`https://image.tmdb.org/t/p/w300${singleMovie?.poster_path}`}
+                alt={singleMovie?.title}
+              />
+            ) : (
+              <img
+                className="m-auto w-[300px] h-[450px] rounded-lg"
+                src="/assets/images/90x138.svg"
+                alt={singleMovie?.title}
+              />
+            )}
 
-          <article className="py-5 max-w-[300px] mx-auto sm:px-10 sm:max-w-none">
-            <div className="flex justify-between gap-5 items-center">
-              <h1 className="text-4xl">{singleMovie?.title}</h1>
-              <CircularRatingProgressbar rating={singleMovie?.vote_average} />
-            </div>
+            <article className="py-5 max-w-[300px] mx-auto sm:px-10 sm:max-w-none text-white flex flex-col gap-3">
+              <div className="flex justify-between gap-5 items-center">
+                <div className="flex items-center gap-5">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
+                    {singleMovie?.title}
+                  </h1>
+                  <FavouriteButton movie={singleMovie} />
+                </div>
 
-            {/* If no release date in CA , show message */}
-            <div className="flex items-center justify-between my-5">
+                <CircularRatingProgressbar rating={singleMovie?.vote_average} />
+              </div>
+
+              {/* If no release date in CA , show message */}
+
               {releaseDateCA ? (
                 <p className="mt-2">
                   <time
@@ -74,63 +93,85 @@ const PageSingleMovie = () => {
                   </time>
                 </p>
               ) : (
-                <p className="mt-2">
+                <p className="">
                   <time dateTime={singleMovie?.release_date}>
                     {singleMovie?.release_date}
                   </time>
                 </p>
               )}
-              <FavouriteButton movie={singleMovie} />
-            </div>
 
-            <p className="mt-2">
-              {singleMovie?.genres.map((genre, index, genresArray) => (
-                <span key={index}>
-                  {genre.name}
-                  {index === genresArray.length - 1 ? "" : " • "}
-                </span>
-              ))}
-            </p>
+              <p className="">
+                {singleMovie?.genres.map((genre, index, genresArray) => (
+                  <span key={index}>
+                    {genre.name}
+                    {index === genresArray.length - 1 ? "" : " • "}
+                  </span>
+                ))}
+              </p>
 
-            {/* <time dateTime={releaseDateCA}>{releaseDateCA}</time> */}
-            <p className="mt-2">
-              <time
-                dateTime={`PT${hour}H${remainingMinutes}M`}
-              >{`${hour}h ${remainingMinutes}m`}</time>
-            </p>
+              {/* <time dateTime={releaseDateCA}>{releaseDateCA}</time> */}
+              <p className="">
+                <time
+                  dateTime={`PT${hour}H${remainingMinutes}M`}
+                >{`${hour}h ${remainingMinutes}m`}</time>
+              </p>
 
-            {singleMovie?.tagline && (
-              <p className="mt-2">{singleMovie?.tagline}</p>
-            )}
-
-            <p className="mt-2">{singleMovie?.overview}</p>
-          </article>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-
-      {officalTrailer &&
-        (isBrowser ? (
-          <div className="max-w-5xl mx-auto mt-5">
-            <div className="relative w-full pt-[56.25%] overflow-hidden">
-              <iframe
-                className="absolute top-0 left-0 bottom-0 right-0 w-full h-full px-5"
-                allowFullScreen
-                src={`https://www.youtube.com/embed/${officalTrailer.key}`}
-              ></iframe>
-            </div>
+              {singleMovie?.tagline && (
+                <p className="text-gray-400">{singleMovie?.tagline}</p>
+              )}
+              <article>
+                <h3 className="text-xl sm:text-3xl font-semibold">Overview</h3>
+                <p className="mt-3">{singleMovie?.overview}</p>
+              </article>
+            </article>
           </div>
         ) : (
-          <a
-            className="flex justify-center mt-2 mx-auto hover:text-white hover:bg-black p-3 border-solid border-2 border-black"
-            href={`https://www.youtube.com/watch?v=${officalTrailer.key}`}
-            target="_blank"
-          >
-            Watch Trailer!
-          </a>
-        ))}
-    </section>
+          <Loading />
+        )}
+        <section className="flex gap-3 px-5 max-w-6xl overflow-x-auto mx-auto object-[10%] my-7">
+          {cast?.map((person, index) => (
+            <article key={index} className="flex-[0_0_auto] text-white w-36">
+              {person.profile_path ? (
+                <img
+                  className="rounded-xl h-44 w-36 object-cover"
+                  src={`https://image.tmdb.org/t/p/w185${person.profile_path}`}
+                  alt={person.name}
+                />
+              ) : (
+                <img
+                  className="rounded-xl h-44 w-36 object-cover"
+                  src="/assets/images/144x176.svg"
+                  alt="Image not found"
+                />
+              )}
+              <h4 className=" font-medium py-1">{person.name}</h4>
+              <p className="text-gray-400 py-2">{person.character}</p>
+            </article>
+          ))}
+        </section>
+
+        {officalTrailer &&
+          (isBrowser ? (
+            <div className="max-w-5xl mx-auto mt-5">
+              <div className="relative w-full pt-[56.25%] overflow-hidden">
+                <iframe
+                  className="absolute top-0 left-0 bottom-0 right-0 w-full h-full px-5"
+                  allowFullScreen
+                  src={`https://www.youtube.com/embed/${officalTrailer.key}`}
+                ></iframe>
+              </div>
+            </div>
+          ) : (
+            <a
+              className="flex justify-center w-2/4 mt-2 rounded-lg mx-auto bg-red-500 text-white font-semibold hover:bg-red-400 p-3"
+              href={`https://www.youtube.com/watch?v=${officalTrailer.key}`}
+              target="_blank"
+            >
+              Watch Trailer!
+            </a>
+          ))}
+      </section>
+    </main>
   );
 };
 export default PageSingleMovie;

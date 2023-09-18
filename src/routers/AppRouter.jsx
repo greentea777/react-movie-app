@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <FavouriteProvider>
         {/* <div className="site-wrapper max-w-screen-xl mx-auto"> */}
-        <div className="site-wrapper">
+        <div className="flex sm:h-screen flex-col">
           <Header />
           <Routes>
             <Route path="/" exact element={<PageHome />} />

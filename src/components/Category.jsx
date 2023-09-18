@@ -27,7 +27,7 @@ const Category = ({ handleCategory, category }) => {
     if (isBrowser) {
       setScrollLimit(32);
     } else {
-      setScrollLimit(64);
+      setScrollLimit(50);
     }
     window.addEventListener("scroll", handleScroll);
 
@@ -45,24 +45,22 @@ const Category = ({ handleCategory, category }) => {
 
   return (
     <nav
-      className={`fixed top-16 left-0 transition-all duration-300 ease-in-out w-full bg-[#000000c5] text-white grid grid-cols-2 justify-items-center min-[420px]:flex min-[420px]:justify-evenly z-10 overflow-hidden ${
-        isHeaderVisible ? "min-[420px]:h-10 h-20" : "h-0"
+      className={`fixed top-16 left-0 transition-all duration-300 ease-in-out w-full bg-[#000000c5] text-white grid grid-cols-2 z-30 overflow-hidden content-center text-sm	min-[420px]:grid-cols-4 min-[420px]:text-base gap-2 px-2 ${
+        isHeaderVisible ? "min-[420px]:h-10 h-16" : "h-0"
       }`}
     >
       {categoryButtons.map((button, index) => (
-        <label
-          key={index}
-          className="w-full hover:text-red-500 min-[420px]:w-auto"
-        >
+        // <label key={index} className="w-full hover:text-red-500 min-[420px]:w-auto">
+        <label key={index}>
           <input
-            className="absolute opacity-0 w-0 h-0 checked:bg-white checked:text-black peer"
+            className="hidden peer"
             type="radio"
             name="radios"
             checked={category === button.value}
             value={button.value}
             onChange={handleCategory}
           />
-          <span className="flex justify-center p-2 peer-checked:text-black peer-checked:bg-white whitespace-nowrap">
+          <span className="transition-colors hover:text-red-500 duration-200 ease-in-out block cursor-pointer select-none text-center p-1 rounded-xl peer-checked:text-white peer-checked:bg-red-500 peer-checked:font-bold whitespace-nowrap">
             {button.name}
           </span>
         </label>

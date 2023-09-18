@@ -2,17 +2,43 @@ import { useContext } from "react";
 import { FavouriteListContext } from "../context/FavouriteContext";
 
 import { useSelector } from "react-redux";
+import useFetch from "../hooks/useFetch";
+import { MOVIE_DB_API_URL, options } from "../globals/APIVariables";
+import ListMovieCard from "../components/ListMovieCard";
 
 const PageFavourite = () => {
   // const favouriteList = useContext(FavouriteListContext);
   const favouriteList = useSelector((state) => state.favs.movies);
   console.log(favouriteList);
+
+  const {
+    data: genres,
+    loading: isGenresLoading,
+    error: genresError,
+  } = useFetch(`${MOVIE_DB_API_URL}genre/movie/list?language=en`, options);
+  const genreList = genres?.genres;
+
   return (
-    <main className="mt-60">
-      <h2 className="text-red-300 text-3xl">Favourite Page</h2>
-      {favouriteList.map((item, index) => (
-        <h3 key={index}>{item.title}</h3>
-      ))}
+    <main className="flex-1">
+      <section className="max-w-6xl mx-auto mt-16 p-5 pb-10">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold py-3 text-white">
+          Favourite{`${favouriteList.length > 1 ? "s" : ""}`}
+          {`(${favouriteList.length})`}
+        </h1>
+        {favouriteList.length > 0 ? (
+          <section className="min-[420px]:grid min-[500px]:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-3 pb-10">
+            {favouriteList.map((movie, index) => (
+              <ListMovieCard key={index} movie={movie} genreList={genreList} />
+            ))}
+          </section>
+        ) : (
+          <section className="flex-1">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold py-3 text-white">
+              No favourite movies yet.
+            </h1>
+          </section>
+        )}
+      </section>
     </main>
   );
 };

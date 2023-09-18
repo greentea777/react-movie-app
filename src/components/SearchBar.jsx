@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { FaChevronLeft } from "react-icons/fa";
+import { FaStar } from "react-icons/fa6";
 import { MOVIE_DB_API_URL, options } from "../globals/APIVariables";
 
 const SearchBar = ({
@@ -31,37 +31,54 @@ const SearchBar = ({
     setSearchInput(e.target.value);
   };
 
-  // useEffect(() => {
-  //   if (!toggleSearchBar) {
-  //     setSearchInput("");
-  //   }
-  // }, [toggleSearchBar]);
   const renderMovies = (title, movieList) => {
     if (!movieList || !movieList.results.length) {
       return (
-        <section>{toggleSearchBar && <h2>No Search Results Found</h2>}</section>
+        <section>
+          {toggleSearchBar && <h2 className="p-5">No Search Results Found</h2>}
+        </section>
       );
     }
 
     return (
-      <section className="p-5 z-20 w-full bg-slate-600 overflow-y-auto h-screen pb-40">
-        <h2>{title}</h2>
-        {movieList.results.map((item) => (
+      <section className="py-5 z-20 w-full bg-[#262629] overflow-y-auto h-screen pb-40">
+        <h2 className="font-bold px-5 text-xl sm:text-4xl">{title}</h2>
+        {movieList.results.map((movie) => (
           <Link
-            key={item.id}
-            to={`/movie/${item.id}/${item.title}`}
+            key={movie.id}
+            to={`/movie/${movie.id}/${movie.title}`}
             onClick={handleNavLinkClick}
           >
-            <article>
-              <h3>{item.title}</h3>
-              {item?.poster_path ? (
+            <article className="p-5 group hover:bg-gray-800 cursor-pointer flex gap-4">
+              {movie?.poster_path ? (
                 <img
-                  src={`https://image.tmdb.org/t/p/w92${item?.poster_path}`}
-                  alt={item.title}
+                  className="rounded-lg"
+                  src={`https://image.tmdb.org/t/p/w92${movie?.poster_path}`}
+                  alt={movie.title}
                 />
               ) : (
-                <p>No movie poster found</p>
+                <img
+                  className="rounded-lg w-[90px] h-[138px]"
+                  src="/assets/images/90x138.svg"
+                  alt="Image not found"
+                />
               )}
+              <div className="flex flex-col justify-evenly">
+                <h3 className="text-lg font-semibold group-hover:text-red-500">
+                  {movie.title}
+                </h3>
+                <time dateTime={movie?.release_date}>
+                  {movie?.release_date}
+                </time>
+                <div className="flex items-center gap-1">
+                  <IconContext.Provider
+                    value={{ className: "text-yellow-500" }}
+                  >
+                    <FaStar />
+                  </IconContext.Provider>
+                  {movie.vote_average.toFixed(1)}
+                </div>
+              </div>
             </article>
           </Link>
         ))}
@@ -137,10 +154,6 @@ const SearchBar = ({
           style={{ border: "none", outline: "none" }}
         />
       </div>
-      {/* {toggleSearchBar && !searchInput
-        ? renderTrendingMovies()
-        : renderSearchResults()} */}
-      {/* {renderSearchResults()} */}
       {toggleSearchBar && !searchInput
         ? renderMovies("Trending", trendingMovies)
         : renderMovies("Search Results", movieSearchList)}

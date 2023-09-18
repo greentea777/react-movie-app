@@ -16,7 +16,7 @@ const HeroMovieCard = ({ movie, genres }) => {
   );
   const movieRating = singleMovieDetails?.vote_average.toFixed(1);
   const releaseDateCA = singleMovieDetails?.release_dates?.results?.find(
-    (date) => date.iso_3166_1 === "CA" || date.iso_3166_1 === "US"
+    (date) => date.iso_3166_1 === "CA"
   );
   const movieRuntimeByMinutes = singleMovieDetails?.runtime;
   const hour = Math.floor(movieRuntimeByMinutes / 60);
@@ -27,7 +27,7 @@ const HeroMovieCard = ({ movie, genres }) => {
       <div>
         {/* fallback if not img */}
         {movie.poster_path || movie.backdrop_path ? (
-          <picture className="before:w-full before:h-full before:absolute before:bg-gradient-to-r before:from-gray-950 after:w-full after:h-full after:absolute after:top-0 after:bg-gradient-to-t after:from-black">
+          <picture className="before:w-full before:h-full before:absolute before:bg-gradient-to-r before:from-gray-950 after:w-full after:h-[200px] after:absolute after:bottom-0 after:bg-gradient-to-t after:from-[#262629] after:from-10%">
             <source
               srcSet={`https://image.tmdb.org/t/p/w780${movie.poster_path}`}
               media="(max-width: 600px)"
@@ -39,7 +39,17 @@ const HeroMovieCard = ({ movie, genres }) => {
             />
           </picture>
         ) : (
-          <p>image not found</p>
+          <picture className="before:w-full before:h-full before:absolute before:bg-gradient-to-r before:from-gray-950 after:w-full after:h-[200px] after:absolute after:bottom-0 after:bg-gradient-to-t after:from-[#262629] after:from-10%">
+            <source
+              srcSet="/assets/images/780x1170.svg"
+              media="(max-width: 600px)"
+            />
+            <img
+              className="w-full object-cover xl:object-top h-[70vh] sm:h-screen"
+              src="/assets/images/3370x2680.svg"
+              alt="Image not found"
+            />
+          </picture>
         )}
 
         <article className="flex flex-col absolute bottom-[27%] text-white sm:gap-1.5 justify-center left-0 right-0 p-5">

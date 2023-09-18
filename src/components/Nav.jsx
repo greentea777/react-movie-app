@@ -82,7 +82,7 @@ const Nav = ({ isBrowser }) => {
             onClick={handleNavLinkClick}
           >
             {isBrowser ? (
-              "Favourite"
+              "Favourites"
             ) : (
               <IconContext.Provider
                 value={{ size: "1.5em", className: "hover:text-red-500" }}
