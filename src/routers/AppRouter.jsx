@@ -7,6 +7,7 @@ import PageAbout from "../pages/PageAbout";
 import PageFavourite from "../pages/PageFavourite";
 import PageSingleMovie from "../pages/PageSingleMovie";
 import { FavouriteProvider } from "../context/FavouriteContext";
+import PageSingleCategory from "../pages/PageSingleCategory";
 
 function App() {
   return (
@@ -18,6 +19,11 @@ function App() {
           <Routes>
             <Route path="/" exact element={<PageHome />} />
             <Route path="/movie/:id/*" exact element={<PageSingleMovie />} />
+            <Route
+              path="/movie/:category"
+              exact
+              element={<PageSingleCategory />}
+            />
             <Route path="/about" exact element={<PageAbout />} />
             <Route path="/favourite" exact element={<PageFavourite />} />
           </Routes>

@@ -31,7 +31,7 @@ const ListMovieSection = ({ genres }) => {
   }, [isBrowser]);
 
   return (
-    <section className="px-5 text-white relative top-[-150px] z-20 flex flex-col gap-10">
+    <section className="px-5 text-white relative top-[-150px] z-20 flex flex-col gap-10 mt-10">
       {!isBrowser && (
         <Category handleCategory={handleCategory} category={category} />
       )}

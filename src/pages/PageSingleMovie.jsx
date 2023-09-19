@@ -163,7 +163,7 @@ const PageSingleMovie = () => {
             </div>
           ) : (
             <a
-              className="flex justify-center w-2/4 mt-2 rounded-lg mx-auto bg-red-500 text-white font-semibold hover:bg-red-400 p-3"
+              className="flex justify-center w-2/4 mt-2 rounded-lg mx-auto bg-red-500 text-white font-semibold hover:bg-red-400 cursor-pointer p-3"
               href={`https://www.youtube.com/watch?v=${officalTrailer.key}`}
               target="_blank"
             >

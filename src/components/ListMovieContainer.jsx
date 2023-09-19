@@ -8,6 +8,8 @@ import { FaPlay } from "react-icons/fa6";
 import { register } from "swiper/element/bundle";
 import ListMovieCard from "./ListMovieCard";
 import Loading from "../components/Loading";
+import { Link } from "react-router-dom";
+import { convertCategory } from "../utilities/utilities";
 
 const ListMovieContainer = ({ category, genreList }) => {
   const [displayMethod, setDisplayMethod] = useState("col");
@@ -65,23 +67,14 @@ const ListMovieContainer = ({ category, genreList }) => {
     setDisplayMethod(displayMethod === "col" ? "row" : "col");
   };
 
-  const convertCategory = (categoryInput) => {
-    const categoryMap = {
-      popular: "Popular",
-      top_rated: "Top Rated",
-      now_playing: "Now Playing",
-      upcoming: "Upcoming",
-    };
-
-    return categoryMap[categoryInput].toUpperCase() || "Unknown";
-  };
-
   return (
     <section>
       <div className="flex justify-between items-center py-3 max-w-6xl mx-auto z-10">
-        <h2 className="font-bold text-xl sm:text-4xl">
-          {convertCategory(category)}
-        </h2>
+        <Link to={`/movie/${category}`}>
+          <h2 className="font-bold text-xl sm:text-4xl uppercase">
+            {convertCategory(category)}
+          </h2>
+        </Link>
         <button
           onClick={toggleDisplayMethod}
           className={`transition-all duration-300 ease-in-out ${

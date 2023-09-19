@@ -9,7 +9,6 @@ import ListMovieCard from "../components/ListMovieCard";
 const PageFavourite = () => {
   // const favouriteList = useContext(FavouriteListContext);
   const favouriteList = useSelector((state) => state.favs.movies);
-  console.log(favouriteList);
 
   const {
     data: genres,
@@ -21,9 +20,9 @@ const PageFavourite = () => {
   return (
     <main className="flex-1">
       <section className="max-w-6xl mx-auto mt-16 p-5 pb-10">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold py-3 text-white">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold py-3 text-white uppercase">
           Favourite{`${favouriteList.length > 1 ? "s" : ""}`}
-          {`(${favouriteList.length})`}
+          {` (${favouriteList.length})`}
         </h1>
         {favouriteList.length > 0 ? (
           <section className="min-[420px]:grid min-[500px]:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-3 pb-10">

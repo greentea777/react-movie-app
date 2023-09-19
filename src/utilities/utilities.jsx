@@ -4,4 +4,15 @@ function getYear() {
   return d.getFullYear();
 }
 
-export { getYear };
+const convertCategory = (categoryInput) => {
+  const categoryMap = {
+    popular: "Popular",
+    top_rated: "Top Rated",
+    now_playing: "Now Playing",
+    upcoming: "Upcoming",
+  };
+
+  return categoryMap[categoryInput] || "Unknown";
+};
+
+export { getYear, convertCategory };

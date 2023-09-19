@@ -107,7 +107,7 @@ const HeroMovieCard = ({ movie, genres }) => {
           <p className="text-gray-400">{singleMovieDetails?.tagline}</p>
           <div className="flex items-center gap-6 mt-7">
             <Link
-              className="rounded-full px-8 py-2 bg-red-500"
+              className="rounded-full px-8 py-2 bg-red-500 font-semibold hover:bg-red-400 cursor-pointer"
               to={`/movie/${singleMovieDetails?.id}/${singleMovieDetails?.title}`}
             >
               More Info
