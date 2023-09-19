@@ -5,6 +5,8 @@ import FavouriteButton from "../components/FavouriteButton";
 import CircularRatingProgressbar from "../components/CircularRatingProgressbar";
 import { MOVIE_DB_API_URL, options } from "../globals/APIVariables";
 import Loading from "../components/Loading";
+import { useEffect } from 'react';
+import { appTitle } from '../globals/globalVariables';
 
 const PageSingleMovie = () => {
   let { id } = useParams();
@@ -42,6 +44,10 @@ const PageSingleMovie = () => {
   const movieRuntimeByMinutes = singleMovie?.runtime;
   const hour = Math.floor(movieRuntimeByMinutes / 60);
   const remainingMinutes = movieRuntimeByMinutes % 60;
+
+  useEffect(() => {
+    document.title = `${appTitle} - ${singleMovie?.title}`;
+  }, [singleMovie?.title]);
 
   return (
     <main className="flex-1">
@@ -84,12 +90,11 @@ const PageSingleMovie = () => {
                       10
                     )}
                   >
-                    {`${
-                      releaseDateCA.iso_3166_1
-                    } - ${releaseDateCA.release_dates[0]?.release_date.slice(
-                      0,
-                      10
-                    )}`}
+                    {`${releaseDateCA.iso_3166_1
+                      } - ${releaseDateCA.release_dates[0]?.release_date.slice(
+                        0,
+                        10
+                      )}`}
                   </time>
                 </p>
               ) : (

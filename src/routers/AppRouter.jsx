@@ -6,6 +6,7 @@ import PageHome from "../pages/PageHome";
 import PageAbout from "../pages/PageAbout";
 import PageFavourite from "../pages/PageFavourite";
 import PageSingleMovie from "../pages/PageSingleMovie";
+import PageNotFound from "../pages/PageNotFound";
 import { FavouriteProvider } from "../context/FavouriteContext";
 import PageSingleCategory from "../pages/PageSingleCategory";
 
@@ -26,6 +27,7 @@ function App() {
             />
             <Route path="/about" exact element={<PageAbout />} />
             <Route path="/favourite" exact element={<PageFavourite />} />
+            <Route path="*" exact element={<PageNotFound />} />
           </Routes>
           <Footer />
         </div>

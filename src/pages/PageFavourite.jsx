@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { FavouriteListContext } from "../context/FavouriteContext";
 
+import { useEffect } from 'react';
 import { useSelector } from "react-redux";
 import useFetch from "../hooks/useFetch";
 import { MOVIE_DB_API_URL, options } from "../globals/APIVariables";
 import ListMovieCard from "../components/ListMovieCard";
+import { appTitle } from '../globals/globalVariables';
 
 const PageFavourite = () => {
   // const favouriteList = useContext(FavouriteListContext);
@@ -16,6 +18,10 @@ const PageFavourite = () => {
     error: genresError,
   } = useFetch(`${MOVIE_DB_API_URL}genre/movie/list?language=en`, options);
   const genreList = genres?.genres;
+
+  useEffect(() => {
+    document.title = `${appTitle} - Favourite`;
+  }, []);
 
   return (
     <main className="flex-1">
