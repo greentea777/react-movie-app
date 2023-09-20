@@ -28,7 +28,7 @@ const PageFavourite = () => {
       <section className="max-w-6xl mx-auto mt-16 p-5 pb-10">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold py-3 text-white uppercase">
           Favourite{`${favouriteList.length > 1 ? "s" : ""}`}
-          {` (${favouriteList.length})`}
+          <span className="text-red-500">{` (${favouriteList.length})`}</span>
         </h1>
         {favouriteList.length > 0 ? (
           <section className="min-[420px]:grid min-[500px]:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-3 pb-10">
