@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 
 const useFetch = (url, options = {}) => {
   const [data, setData] = useState(null);
@@ -22,6 +23,8 @@ const useFetch = (url, options = {}) => {
     };
     fetchData();
   }, [url]);
+
+
 
   return { data, loading, error };
 };

@@ -7,27 +7,30 @@ import { MOVIE_DB_API_URL, options } from "../globals/APIVariables";
 import Loading from "../components/Loading";
 import { useEffect } from 'react';
 import { appTitle } from '../globals/globalVariables';
+import { Navigate } from "react-router-dom";
 
 const PageSingleMovie = () => {
   let { id } = useParams();
   const isBrowser = useMediaQuery("(min-width: 640px)");
+
+  id = id * 1;
+
+  if (isNaN(id) || id % 1 !== 0 || id < 0) {
+    return <Navigate to="/404" replace={true} />;
+  }
 
   const {
     data: singleMovie,
     loading: singleMovieLoading,
     error: singleMovieError,
   } = useFetch(
-    `${MOVIE_DB_API_URL}/movie/${id}?append_to_response=videos%2Crelease_dates%2Ccredits&language=en-CA`,
+    `${MOVIE_DB_API_URL}movie/${id}?append_to_response=videos%2Crelease_dates%2Ccredits&language=en-CA`,
     options
   );
-
-  id = id * 1;
 
   const cast = singleMovie?.credits?.cast?.filter(
     (cast) => cast.known_for_department === "Acting" && cast.order < 16
   );
-
-  console.log(cast);
 
   const officalTrailer = singleMovie?.videos?.results?.find(
     (video) =>
@@ -40,6 +43,9 @@ const PageSingleMovie = () => {
   );
 
   // .release_dates[0]?.release_date.slice(0, 10);
+  // if (!singleMovie?.title && !singleMovie?.release_date) {
+  //   return <Navigate to="/404" replace={true} />;
+  // }
 
   const movieRuntimeByMinutes = singleMovie?.runtime;
   const hour = Math.floor(movieRuntimeByMinutes / 60);

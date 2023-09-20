@@ -9,6 +9,7 @@ import PageSingleMovie from "../pages/PageSingleMovie";
 import PageNotFound from "../pages/PageNotFound";
 import { FavouriteProvider } from "../context/FavouriteContext";
 import PageSingleCategory from "../pages/PageSingleCategory";
+import { Navigate } from "react-router-dom";
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
             />
             <Route path="/about" exact element={<PageAbout />} />
             <Route path="/favourite" exact element={<PageFavourite />} />
-            <Route path="*" exact element={<PageNotFound />} />
+            <Route path="/404" exact element={<PageNotFound />} />
+            <Route path="*" element={<Navigate to="/404" />} />
           </Routes>
           <Footer />
         </div>

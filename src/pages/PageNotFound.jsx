@@ -16,7 +16,7 @@ const PageNotFound = () => {
           <img className="w-36 h-36 my-5 mx-auto" src="/unhappy.svg" alt="TMDB Logo" />
           <p className="text-[36px] font-bold my-5">Page not found.</p>
           <p className="my-5">We are sorry, the page you requested could not be found.</p>
-          <button className='rounded-full bg-sky-500/75 w-32 p-2 my-5'><Link to="/">Home</Link></button>
+          <button className='rounded-full bg-red-500 font-semibold hover:bg-red-400 cursor-pointer w-32 p-2 my-5'><Link to="/">Home</Link></button>
         </div>
       </section>
     </main>
