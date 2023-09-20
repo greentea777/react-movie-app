@@ -43,8 +43,8 @@ const ListMovieCard = ({ movie, genreList }) => {
 
               {singleMovie?.logos[0]?.file_path ? (
                 <img
-                  className="absolute bottom-[10%] left-2/4 translate-x-[-50%] z-0"
-                  src={`https://image.tmdb.org/t/p/w92${singleMovie?.logos[0]?.file_path}`}
+                  className="absolute bottom-[10%] left-2/4 translate-x-[-50%] z-0 w-4/12	"
+                  src={`https://image.tmdb.org/t/p/w154${singleMovie?.logos[0]?.file_path}`}
                   alt={movie.title}
                 />
               ) : (
