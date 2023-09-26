@@ -50,7 +50,7 @@ const ListMovieCard = ({ movie, genreList }) => {
                 />
               ) : (
                 movie.backdrop_path && (
-                  <h2 className="absolute bottom-[10%] left-2/4 translate-x-[-50%] text-lg font-semibold text-white">
+                  <h2 className="absolute bottom-[10%] left-2/4 translate-x-[-50%] font-semibold text-xs text-white sm:text-lg">
                     {movie.title}
                   </h2>
                 )
