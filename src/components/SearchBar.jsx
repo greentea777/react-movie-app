@@ -2,8 +2,9 @@ import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { FaChevronLeft } from "react-icons/fa";
-import { FaStar } from "react-icons/fa6";
+import { FaStar, FaPlay } from "react-icons/fa6";
 import { MOVIE_DB_API_URL, options } from "../globals/APIVariables";
+import searchPosterFallbackImg from "../assets/images/90x138.svg";
 
 const SearchBar = ({
   searchInput,
@@ -41,7 +42,7 @@ const SearchBar = ({
     }
 
     return (
-      <section className="py-5 z-20 w-full bg-[#262629] overflow-y-auto h-screen pb-40">
+      <section className="py-5 z-20 w-full bg-[#262629c4] overflow-y-auto h-screen pb-40">
         <h2 className="font-bold px-5 text-xl sm:text-4xl">{title}</h2>
         {movieList.results.map((movie) => (
           <Link
@@ -59,7 +60,7 @@ const SearchBar = ({
               ) : (
                 <img
                   className="rounded-lg w-[90px] h-[138px]"
-                  src="/assets/images/90x138.svg"
+                  src={searchPosterFallbackImg}
                   alt="Image not found"
                 />
               )}
@@ -86,52 +87,26 @@ const SearchBar = ({
     );
   };
 
-  // const renderSearchResults = () => {
-  //   if (!searchInput || !movieSearchList?.results.length) {
-  //     return null;
-  //   }
-
-  //   return (
-  //     <section className="p-5 z-20 w-full bg-slate-600 overflow-y-auto h-screen pb-40">
-  //       <h2>Search Results</h2>
-  //       {movieSearchList.results.map((item) => (
-  //         <Link
-  //           key={item.id}
-  //           to={`/movie/${item.id}/${item.title}`}
-  //           onClick={handleNavLinkClick}
-  //         >
-  //           <article>
-  //             <h3>{item.title}</h3>
-  //             {item?.poster_path ? (
-  //               <img
-  //                 src={`https://image.tmdb.org/t/p/w92${item?.poster_path}`}
-  //                 alt={item.title}
-  //               />
-  //             ) : (
-  //               <p>No movie poster found</p>
-  //             )}
-  //           </article>
-  //         </Link>
-  //       ))}
-  //     </section>
-  //   );
-  // };
-
   return (
     <section
-      className={`fixed top-0 right-0 left-0 bg-black z-30 ${
+      className={`fixed top-0 right-0 left-0 bg-[#000000dd] z-30 ${
         toggleSearchBar && "h-screen"
       }`}
     >
       <div
-        className={`flex gap-5 transition-all duration-100 overflow-hidden ${
+        className={`flex gap-5 transition-all duration-100 overflow-hidden bg-black items-center ${
           toggleSearchBar ? "h-[64px] p-3" : "h-0 opacity-0 p-0"
         }`}
-        // className={`flex mx-auto overflow-hidden ${
-        //   toggleSearchBar ? "p-3" : "p-0"
-        // }`}
       >
-        <button onClick={handleNavLinkClick}>
+        <button
+          onClick={handleNavLinkClick}
+          className="rounded-md flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 bg-red-500 z-30 hover:bg-red-400"
+        >
+          <IconContext.Provider value={{ className: "text-white rotate-180" }}>
+            <FaPlay />
+          </IconContext.Provider>
+        </button>
+        {/* <button onClick={handleNavLinkClick}>
           <IconContext.Provider
             value={{
               size: "1.5em",
@@ -140,13 +115,9 @@ const SearchBar = ({
           >
             <FaChevronLeft />
           </IconContext.Provider>
-        </button>
+        </button> */}
         <input
           className="p-3 w-full text-black rounded-full"
-          // className={`transition-all duration-100 w-full overflow-hidden text-black ${
-          //   toggleSearchBar ? "h-[40px] p-2" : "h-0 opacity-0 p-0"
-          // }`}
-
           type="search"
           placeholder="Search for movies by title"
           value={searchInput}

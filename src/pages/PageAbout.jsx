@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { appTitle } from "../globals/globalVariables";
+import tmdbLogo from "../assets/images/tmdb-logo.svg";
 
 const PageAbout = () => {
   useEffect(() => {
@@ -35,21 +36,21 @@ const PageAbout = () => {
               by TMDb. This application was created for educational purposes
               only.
             </p>
-            <img className="w-36 h-36" src="/tmdb-logo.svg" alt="TMDB Logo" />
+            <img className="w-36 h-36" src={tmdbLogo} alt="TMDB Logo" />
           </article>
-          <div className="flex flex-col items-center sm:p-0">
+          <div className="flex flex-col items-center sm:p-0 mt-5">
             <article>
               <h2 className="text-[22px] sm:text-2xl md:text-3xl font-bold uppercase pb-2 mb-3">
                 About the Team
               </h2>
               <p>
                 PopMovie is created by Zhijun Yang, Willy Hsu, and Sally Leung.
-                Presently, all three individuals are students in BCIT's Front-end
-                Developer program, with their focus on acquiring the skills
-                necessary to excel in the fields of web design and development.
-                PopMovie serves as a joint endeavor showcasing their applied
-                expertise in React.js and the utilization of API keys to retrieve
-                data.
+                Presently, all three individuals are students in BCIT's
+                Front-end Developer program, with their focus on acquiring the
+                skills necessary to excel in the fields of web design and
+                development. PopMovie serves as a joint endeavor showcasing
+                their applied expertise in React.js and the utilization of API
+                keys to retrieve data.
               </p>
             </article>
 

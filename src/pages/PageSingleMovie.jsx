@@ -5,9 +5,11 @@ import FavouriteButton from "../components/FavouriteButton";
 import CircularRatingProgressbar from "../components/CircularRatingProgressbar";
 import { MOVIE_DB_API_URL, options } from "../globals/APIVariables";
 import Loading from "../components/Loading";
-import { useEffect } from 'react';
-import { appTitle } from '../globals/globalVariables';
+import { useEffect } from "react";
+import { appTitle } from "../globals/globalVariables";
 import { Navigate } from "react-router-dom";
+import posterFallbackImg from "../assets/images/300x450.svg";
+import castFallbackImg from "../assets/images/144x176.svg";
 
 const PageSingleMovie = () => {
   let { id } = useParams();
@@ -69,7 +71,7 @@ const PageSingleMovie = () => {
             ) : (
               <img
                 className="m-auto w-[300px] h-[450px] rounded-lg"
-                src="/assets/images/90x138.svg"
+                src={posterFallbackImg}
                 alt={singleMovie?.title}
               />
             )}
@@ -96,11 +98,12 @@ const PageSingleMovie = () => {
                       10
                     )}
                   >
-                    {`${releaseDateCA.iso_3166_1
-                      } - ${releaseDateCA.release_dates[0]?.release_date.slice(
-                        0,
-                        10
-                      )}`}
+                    {`${
+                      releaseDateCA.iso_3166_1
+                    } - ${releaseDateCA.release_dates[0]?.release_date.slice(
+                      0,
+                      10
+                    )}`}
                   </time>
                 </p>
               ) : (
@@ -151,7 +154,7 @@ const PageSingleMovie = () => {
               ) : (
                 <img
                   className="rounded-xl h-44 w-36 object-cover"
-                  src="/assets/images/144x176.svg"
+                  src={castFallbackImg}
                   alt="Image not found"
                 />
               )}

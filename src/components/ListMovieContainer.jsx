@@ -70,11 +70,19 @@ const ListMovieContainer = ({ category, genreList }) => {
   return (
     <section>
       <div className="flex justify-between items-center py-3 max-w-6xl mx-auto z-10">
-        <Link to={`/movie/${category}`}>
+        <div className="flex items-center gap-3">
           <h2 className="font-bold text-xl sm:text-4xl uppercase">
             {convertCategory(category)}
           </h2>
-        </Link>
+          <Link to={`/movie/${category}`}>
+            <span className="rounded-md flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 bg-red-500 z-30 hover:bg-red-400">
+              <IconContext.Provider value={{ className: "text-white" }}>
+                <FaPlay />
+              </IconContext.Provider>
+            </span>
+          </Link>
+        </div>
+
         <button
           onClick={toggleDisplayMethod}
           className={`transition-all duration-300 ease-in-out ${

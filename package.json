@@ -1,6 +1,7 @@
 {
   "name": "react-movie-app",
   "contributors": "Willy Hsu & Zhijun Yang & Sally Leung",
+  "homepage": "https://willyhsu.ca/popmovie",
   "private": true,
   "version": "0.0.0",
   "type": "module",

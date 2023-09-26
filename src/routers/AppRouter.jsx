@@ -13,7 +13,7 @@ import { Navigate } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={"/popmovie"}>
       <FavouriteProvider>
         {/* <div className="site-wrapper max-w-screen-xl mx-auto"> */}
         <div className="flex sm:h-screen flex-col">

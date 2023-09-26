@@ -5,6 +5,7 @@ import useFetch from "../hooks/useFetch";
 
 import { MOVIE_DB_API_URL, options } from "../globals/APIVariables";
 import Loading from "./Loading";
+import singleMovieBackDropFallback from "../assets/images/780x440.svg";
 
 const ListMovieCard = ({ movie, genreList }) => {
   const commonGenreId = genreList?.filter((value) =>
@@ -36,7 +37,7 @@ const ListMovieCard = ({ movie, genreList }) => {
               ) : (
                 <img
                   className="rounded-2xl w-full"
-                  src="/assets/images/780x440.svg"
+                  src={singleMovieBackDropFallback}
                   alt="Image not found"
                 />
               )}
@@ -49,7 +50,7 @@ const ListMovieCard = ({ movie, genreList }) => {
                 />
               ) : (
                 movie.backdrop_path && (
-                  <h2 className="absolute bottom-[10%] left-2/4 translate-x-[-50%] text-lg font-semibold">
+                  <h2 className="absolute bottom-[10%] left-2/4 translate-x-[-50%] text-lg font-semibold text-white">
                     {movie.title}
                   </h2>
                 )

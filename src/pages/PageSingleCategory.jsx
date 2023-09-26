@@ -4,7 +4,7 @@ import useFetch from "../hooks/useFetch";
 import { useEffect, useState } from "react";
 import { MOVIE_DB_API_URL, options } from "../globals/APIVariables";
 import ListMovieCard from "../components/ListMovieCard";
-import { appTitle } from '../globals/globalVariables';
+import { appTitle } from "../globals/globalVariables";
 
 const PageSingleCategory = () => {
   const [page, setPage] = useState(1);

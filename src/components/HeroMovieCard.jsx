@@ -4,6 +4,8 @@ import { FaStar } from "react-icons/fa6";
 import { MOVIE_DB_API_URL, options } from "../globals/APIVariables";
 import { Link } from "react-router-dom";
 import FavouriteButton from "./FavouriteButton";
+import HeroPosterFallback from "../assets/images/780x1170.svg";
+import HeroBackdropFallback from "../assets/images/3370x2680.svg";
 
 const HeroMovieCard = ({ movie, genres }) => {
   const commonGenreId = genres?.genres?.filter((value) =>
@@ -40,13 +42,10 @@ const HeroMovieCard = ({ movie, genres }) => {
           </picture>
         ) : (
           <picture className="before:w-full before:h-full before:absolute before:bg-gradient-to-r before:from-gray-950 after:w-full after:h-[200px] after:absolute after:bottom-0 after:bg-gradient-to-t after:from-[#262629] after:from-10%">
-            <source
-              srcSet="/assets/images/780x1170.svg"
-              media="(max-width: 600px)"
-            />
+            <source srcSet={HeroPosterFallback} media="(max-width: 600px)" />
             <img
               className="w-full object-cover xl:object-top h-[70vh] sm:h-screen"
-              src="/assets/images/3370x2680.svg"
+              src={HeroBackdropFallback}
               alt="Image not found"
             />
           </picture>
