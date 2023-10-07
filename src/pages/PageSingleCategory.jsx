@@ -46,7 +46,8 @@ const PageSingleCategory = () => {
     <main className="flex-1 mb-20">
       <section className="max-w-6xl mx-auto mt-16 p-5 pb-10">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold py-3 text-white uppercase">
-          {convertCategory(category)} {movieData.length}
+          {convertCategory(category)}{" "}
+          <span className="text-red-500"> ({movieData.length})</span>
         </h1>
         <section className="min-[420px]:grid min-[500px]:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-3 pb-10">
           {movieData?.map((movie, index) => (
