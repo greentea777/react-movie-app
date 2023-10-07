@@ -96,10 +96,7 @@ const HeroMovieCard = ({ movie, genres }) => {
             <div className="flex gap-3 text-gray-400">
               <span className="sr-only">Genres:</span>
               {commonGenreId?.slice(0, 3).map((item, index, array) => (
-                <span key={index}>
-                  {item.name}
-                  {/* {index === array.length - 1 ? "" : " •"} */}
-                </span>
+                <span key={index}>{item.name}</span>
               ))}
             </div>
           </section>

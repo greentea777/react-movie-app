@@ -50,7 +50,6 @@ const Category = ({ handleCategory, category }) => {
       }`}
     >
       {categoryButtons.map((button, index) => (
-        // <label key={index} className="w-full hover:text-red-500 min-[420px]:w-auto">
         <label key={index}>
           <input
             className="hidden peer"

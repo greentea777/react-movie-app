@@ -11,28 +11,14 @@ const HeroSection = ({ movies, genres }) => {
     // register Swiper custom elements
     register();
     const params = {
-      // pagination: {
-      //   // clickable: true,
-      //   type: "progressbar",
-      // },
       navigation: {
         nextEl: ".custom_next",
         prevEl: ".custom_prev",
       },
-      // navigation: true,
       scrollbar: {
         hide: false,
       },
       grabCursor: true,
-      // on: {
-      //   reachBeginning() {
-      //     console.log("123");
-      //   },
-      //   reachEnd() {
-      //     console.log("456");
-      //   },
-      // },
-      // loop: true,
     };
     Object.assign(swiperElRef.current, params);
     swiperElRef.current.initialize();
@@ -42,7 +28,6 @@ const HeroSection = ({ movies, genres }) => {
     ?.sort(() => Math.random() - 0.5)
     .slice(0, 5);
 
-  // console.log(movies);
   return (
     <section className="relative z-10">
       <div

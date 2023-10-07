@@ -1,7 +1,6 @@
 import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
-import { FaChevronLeft } from "react-icons/fa";
 import { FaStar, FaPlay } from "react-icons/fa6";
 import { MOVIE_DB_API_URL, options } from "../globals/APIVariables";
 import searchPosterFallbackImg from "../assets/images/90x138.svg";
@@ -100,22 +99,12 @@ const SearchBar = ({
       >
         <button
           onClick={handleNavLinkClick}
-          className="rounded-md flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 bg-red-500 z-30 hover:bg-red-400"
+          className="rounded-md flex items-center justify-center w-8 h-8 bg-red-500 z-30 hover:bg-red-400"
         >
           <IconContext.Provider value={{ className: "text-white rotate-180" }}>
             <FaPlay />
           </IconContext.Provider>
         </button>
-        {/* <button onClick={handleNavLinkClick}>
-          <IconContext.Provider
-            value={{
-              size: "1.5em",
-              className: "hover:text-red-500 text-white",
-            }}
-          >
-            <FaChevronLeft />
-          </IconContext.Provider>
-        </button> */}
         <input
           className="p-3 w-full text-black rounded-full"
           type="search"

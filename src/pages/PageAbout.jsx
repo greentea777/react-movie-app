@@ -9,13 +9,13 @@ const PageAbout = () => {
 
   return (
     <main className="flex-1">
-      <section className="max-w-6xl mx-auto mt-16 p-5 text-white">
+      <section className="max-w-6xl mx-auto mt-16 p-5 text-white mb-20 sm:mb-0">
         <h1 className="text-[22px] sm:text-4xl md:text-5xl font-bold py-3 uppercase">
           About
         </h1>
-        <div className="flex flex-col sm:flex-row gap-8 mt-5">
-          <article className="pb-10 border-b-2 border-red-700 sm:pr-5 sm:border-r-2 sm:border-b-0 sm:pb-0 mt-5">
-            <h2 className="text-[22px] sm:text-2xl md:text-3xl font-bold uppercase pb-2 mb-3">
+        <div className="flex flex-col md:flex-row gap-8 mt-5">
+          <article className="min-w-[40%] pb-10 border-b-2 border-red-700 sm:pr-5 md:border-r-2 md:border-b-0 sm:pb-0 mt-5">
+            <h2 className="text-[22px] sm:text-2xl md:text-3xl font-bold uppercase mb-3">
               Welcome to PopMovie
             </h2>
             <p>
@@ -38,9 +38,9 @@ const PageAbout = () => {
             </p>
             <img className="w-36 h-36" src={tmdbLogo} alt="TMDB Logo" />
           </article>
-          <div className="flex flex-col items-center sm:p-0 mt-5">
+          <div className="sm:p-0 mt-5">
             <article>
-              <h2 className="text-[22px] sm:text-2xl md:text-3xl font-bold uppercase pb-2 mb-3">
+              <h2 className="text-[22px] sm:text-2xl md:text-3xl font-bold uppercase mb-3">
                 About the Team
               </h2>
               <p>
@@ -55,18 +55,20 @@ const PageAbout = () => {
             </article>
 
             <article>
-              <h2 className="text-[22px] sm:text-2xl md:text-3xl font-bold uppercase pb-2 mb-3 mt-5">
+              <h2 className="text-[22px] sm:text-2xl md:text-3xl font-bold uppercase mb-3 mt-6">
                 Contact Us
               </h2>
-              <h3 className="sm:text-lg md:text-xl font-bold uppercase pb-2 mb-3">
+              <h3 className="sm:text-lg md:text-xl font-bold uppercase">
                 Appreciate our work? Reach out to us
               </h3>
               <p>
                 Send us a message and reach us through the following channels:
               </p>
               <ul>
-                <li className="my-5">
-                  <p className="inline mr-5">Zhijun Yang</p>
+                <li className="my-5 sm:flex sm:items-center">
+                  <p className="mr-5 inline-block w-[20%] whitespace-nowrap">
+                    Zhijun Yang
+                  </p>
                   <a
                     className="mr-3"
                     href="https://www.linkedin.com/in/yang-zhijun/"
@@ -104,8 +106,10 @@ const PageAbout = () => {
                     </svg>
                   </a>
                 </li>
-                <li className="my-5">
-                  <p className="inline mr-5">Willy Hsu</p>
+                <li className="my-5 sm:flex sm:items-center">
+                  <p className="mr-5 inline-block w-[20%] whitespace-nowrap">
+                    Willy Hsu
+                  </p>
                   <a
                     className="mr-3"
                     href="https://www.linkedin.com/in/willy-hsu-216137267/"
@@ -143,8 +147,10 @@ const PageAbout = () => {
                     </svg>
                   </a>
                 </li>
-                <li className="my-5">
-                  <p className="inline mr-5">Sally Leung</p>
+                <li className="my-5 sm:flex sm:items-center">
+                  <p className="mr-5 inline-block w-[20%] whitespace-nowrap">
+                    Sally Leung
+                  </p>
                   <a
                     className="mr-3"
                     href="https://www.linkedin.com/in/sally-leung-06a87618b/"

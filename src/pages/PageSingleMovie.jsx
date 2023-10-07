@@ -44,11 +44,6 @@ const PageSingleMovie = () => {
     (date) => date.iso_3166_1 === "CA" || date.iso_3166_1 === "US"
   );
 
-  // .release_dates[0]?.release_date.slice(0, 10);
-  // if (!singleMovie?.title && !singleMovie?.release_date) {
-  //   return <Navigate to="/404" replace={true} />;
-  // }
-
   const movieRuntimeByMinutes = singleMovie?.runtime;
   const hour = Math.floor(movieRuntimeByMinutes / 60);
   const remainingMinutes = movieRuntimeByMinutes % 60;
@@ -107,14 +102,14 @@ const PageSingleMovie = () => {
                   </time>
                 </p>
               ) : (
-                <p className="">
+                <p>
                   <time dateTime={singleMovie?.release_date}>
                     {singleMovie?.release_date}
                   </time>
                 </p>
               )}
 
-              <p className="">
+              <p>
                 {singleMovie?.genres.map((genre, index, genresArray) => (
                   <span key={index}>
                     {genre.name}
@@ -123,8 +118,7 @@ const PageSingleMovie = () => {
                 ))}
               </p>
 
-              {/* <time dateTime={releaseDateCA}>{releaseDateCA}</time> */}
-              <p className="">
+              <p>
                 <time
                   dateTime={`PT${hour}H${remainingMinutes}M`}
                 >{`${hour}h ${remainingMinutes}m`}</time>

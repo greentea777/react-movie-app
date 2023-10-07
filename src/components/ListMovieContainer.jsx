@@ -19,15 +19,9 @@ const ListMovieContainer = ({ category, genreList }) => {
       // register Swiper custom elements
       register();
       const params = {
-        // grabCursor: true,
         pagination: {
           type: "progressbar",
         },
-        // loop: true,
-        // autoplay: {
-        //   delay: 2500,
-        //   disableOnInteraction: false,
-        // },
         navigation: {
           nextEl: `.custom_${category}_list_next`,
           prevEl: `.custom_${category}_list_prev`,

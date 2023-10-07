@@ -3,8 +3,6 @@ import { IconContext } from "react-icons";
 import { FaHouseDamage, FaInfoCircle, FaHeart, FaSearch } from "react-icons/fa";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
-// import { FaInfoCircle } from "react-icons/fa";
-// import { FaHeart } from "react-icons/fa";
 
 const Nav = ({ isBrowser }) => {
   const [searchInput, setSearchInput] = useState("");
