@@ -42,8 +42,6 @@ const PageSingleCategory = () => {
     }
   }, [movieList?.results]);
 
-  console.log(page === movieList?.total_pages);
-
   return (
     <main className="flex-1 mb-20">
       <section className="max-w-6xl mx-auto mt-16 p-5 pb-10">

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { appTitle } from "../globals/globalVariables";
+import unHappyImg from "../assets/images/unhappy.svg";
 
 const PageNotFound = () => {
   useEffect(() => {
@@ -16,7 +17,7 @@ const PageNotFound = () => {
         <div className="flex flex-col items-center">
           <img
             className="w-36 h-36 my-5 mx-auto"
-            src="/unhappy.svg"
+            src={unHappyImg}
             alt="TMDB Logo"
           />
           <p className="text-[36px] font-bold my-5">Page not found.</p>
